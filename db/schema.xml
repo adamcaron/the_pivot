@@ -41,7 +41,7 @@
     <type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'"/>
     <type label="Geometry" length="0" sql="GEOMETRY" quote="'"/>
   </group>
-</datatypes><table x="743" y="65" name="listings">
+</datatypes><table x="737" y="45" name="listings">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -137,7 +137,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="501" y="32" name="reservation">
+<table x="494" y="19" name="reservation">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -150,6 +150,9 @@
 <default>NULL</default><relation table="listings" row="id" />
 </row>
 <row name="status" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="date_range" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
