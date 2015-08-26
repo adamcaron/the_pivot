@@ -11,18 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826003853) do
+ActiveRecord::Schema.define(version: 20150826004320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "activities", force: :cascade do |t|
-    t.text     "name"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.text     "image_url"
-  end
 
   create_table "housing_types", force: :cascade do |t|
     t.string "name"
@@ -55,15 +47,6 @@ ActiveRecord::Schema.define(version: 20150826003853) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "order_trips", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "trip_id"
-    t.integer "quantity"
-  end
-
-  add_index "order_trips", ["order_id"], name: "index_order_trips_on_order_id", using: :btree
-  add_index "order_trips", ["trip_id"], name: "index_order_trips_on_trip_id", using: :btree
-
   create_table "reservations", force: :cascade do |t|
     t.integer  "guest_id"
     t.datetime "created_at",             null: false
@@ -75,15 +58,6 @@ ActiveRecord::Schema.define(version: 20150826003853) do
 
   add_index "reservations", ["guest_id"], name: "index_reservations_on_guest_id", using: :btree
   add_index "reservations", ["listing_id"], name: "index_reservations_on_listing_id", using: :btree
-
-  create_table "reviews", force: :cascade do |t|
-    t.string   "name"
-    t.text     "content"
-    t.string   "occupation"
-    t.string   "image_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "roles", force: :cascade do |t|
     t.string   "title"
@@ -108,7 +82,5 @@ ActiveRecord::Schema.define(version: 20150826003853) do
   end
 
   add_foreign_key "listings", "locations"
-  add_foreign_key "order_trips", "listings", column: "trip_id"
-  add_foreign_key "order_trips", "reservations", column: "order_id"
   add_foreign_key "reservations", "users", column: "guest_id"
 end
