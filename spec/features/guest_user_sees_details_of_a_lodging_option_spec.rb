@@ -9,15 +9,14 @@ before :each do
   page.execute_script %Q{ $("a.ui-state-default:contains('16')").trigger("click") } # click on day 15click_on 'Search'
   click_button 'Search'
 
-  click_link 'Tiki Hut 3'
+  click_link 'Tiki Hut 2'
 end
 
 feature 'Guest user sees details of a lodging option' do
   scenario 'on listing show, not logged in' do
-    expect(current_path).to eq('tiki-hut-3')
-    expect(page).to have_content('Tiki Hut 3')
-    expect(page).to have_content('$300.00')
-    expect(page).to have_content('$300.00')
+    expect(current_path).to eq('tiki-hut-2')
+    expect(page).to have_content('Tiki Hut 2')
+    expect(page).to have_content('$100.00')
     expect(page).to have_content('15')
     expect(page).to have_content('16')
   end
