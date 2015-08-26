@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 before :each do
+  create_listings
+
   visit root_path
   select('Asia', from: 'Location')
   page.execute_script %Q{ $('#from').trigger("focus") } # activate datetime picker
