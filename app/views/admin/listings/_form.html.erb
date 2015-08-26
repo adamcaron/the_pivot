@@ -1,13 +1,13 @@
 <article>
-  <%= form_for([:admin, @trip], html: { multipart: true }) do |f| %>
-      <table id = "whole-card" class="mdl-data-table mdl-js-data-table edit-trip-table">
+  <%= form_for([:admin, @listing], html: { multipart: true }) do |f| %>
+      <table id = "whole-card" class="mdl-data-table mdl-js-data-table edit-listing-table">
         <thead>
         <tr>
-          <th id="table-title" class="mdl-data-table__cell--non-numeric"><%= @title %> Trip</th>
+          <th id="table-title" class="mdl-data-table__cell--non-numeric"><%= @title %> Listing</th>
           <th id="table-title" class="mdl-data-table__cell--non-numeric"></th>
         </tr>
         <tr>
-          <th class="mdl-data-table__cell--non-numeric"><%= f.label :name, "Trip Name:" %></th>
+          <th class="mdl-data-table__cell--non-numeric"><%= f.label :name, "Listing Name:" %></th>
           <th class="mdl-data-table__cell--non-numeric"><%= f.label :description, "Description:" %></th>
         </tr>
         </thead>
@@ -17,11 +17,11 @@
           <td class="mdl-data-table__cell--non-numeric"><%= f.text_field :description %></td>
         </tr>
         <tr>
-          <th class="mdl-data-table__cell--non-numeric"><%= f.label :trip_cost, "Trip Cost:" %></th>
+          <th class="mdl-data-table__cell--non-numeric"><%= f.label :listing_cost, "Listing Cost:" %></th>
           <th class="mdl-data-table__cell--non-numeric"><%= f.label :destination_id, "Destination:" %></th>
         </tr>
         <tr>
-          <td class="mdl-data-table__cell--non-numeric"><%= f.number_field :trip_cost %></td>
+          <td class="mdl-data-table__cell--non-numeric"><%= f.number_field :listing_cost %></td>
           <td class="mdl-data-table__cell--non-numeric"><%= f.select(:destination_id, Destination.all.map{ |d| ["#{d.continent}", d.id ] } ) %></td>
         </tr>
 
@@ -45,7 +45,7 @@
         </tr>
         <tr>
           <td class="mdl-data-table__cell--non-numeric"></td>
-          <td class="mdl-data-table__cell--non-numeric new-trip-submit"><%= f.submit "#{@title} Trip" %></td>
+          <td class="mdl-data-table__cell--non-numeric new-listing-submit"><%= f.submit "#{@title} Listing" %></td>
         </tr>
         </tr>
         </tbody>

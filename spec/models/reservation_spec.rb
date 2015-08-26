@@ -9,14 +9,14 @@ RSpec.describe Reservation, type: :model do
       expect(reservation.user_id).to eq(2)
     end
 
-    it 'has user trips' do
+    it 'has user listings' do
       reservation = create_reservation
-      expect(reservation.reservation_trips).to eq([])
+      expect(reservation.reservation_listings).to eq([])
     end
 
-    it 'has trips' do
+    it 'has listings' do
       reservation = create_reservation
-      expect(reservation.trips).to eq([])
+      expect(reservation.listings).to eq([])
     end
   end
 

@@ -3,25 +3,25 @@
 <script src="map.js" type="text/javascript"></script>
 
 <article>
-  <h1 id="title"><%= @trip.name %></h1>
+  <h1 id="title"><%= @listing.name %></h1>
 
-  <div class = "trip-img">
-    <%= image_tag @trip.image, class: "trip-show-card" %>
+  <div class = "listing-img">
+    <%= image_tag @listing.image, class: "listing-show-card" %>
   </div>
 
   <div class="mdl-grid">
     <div class="description mdl-cell mdl-cell--7-col">
 
-      <p id="trip-description">
-        <%= @trip.description %>
+      <p id="listing-description">
+        <%= @listing.description %>
       </p>
 
-      <h3 class="trip-subheader"><%= number_to_currency(@trip.trip_cost) %></h3>
-      <%= link_to "Book Trip", cart_trips_path(trip_id: @trip.id), method: :post, class: "call-to-action" %>
+      <h3 class="listing-subheader"><%= number_to_currency(@listing.listing_cost) %></h3>
+      <%= link_to "Book Listing", cart_listings_path(listing_id: @listing.id), method: :post, class: "call-to-action" %>
     </div>
 
     <div class="extras mdl-cell mdl-cell--5-col">
-      <div id="map" class="trip-page-map">
+      <div id="map" class="listing-page-map">
 
       </div>
 

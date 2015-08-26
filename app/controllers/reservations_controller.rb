@@ -3,7 +3,7 @@ class ReservationsController < ApplicationController
   def create
     if current_user
       reservation = current_user.reservations.create
-      session[:cart].each do |trip_id, quantity|
+      session[:cart].each do |listing_id, quantity|
         #need to revise; no order trip
         #OrderTrip.create(trip_id: trip_id, reservation_id: reservation.id, quantity: quantity)
       end

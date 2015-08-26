@@ -1,5 +1,5 @@
-class Trip < ActiveRecord::Base
-  validates :trip_cost, :name, :destination_id,
+class Listing < ActiveRecord::Base
+  validates :listing_cost, :name, :destination_id,
             :activity_id, presence: true
   validates :name, uniqueness: true
   validates :name, length: { maximum: 25 }

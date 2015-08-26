@@ -8,7 +8,7 @@
     <th id="table-title" class="mdl-data-table__cell--non-numeric"></th>
   </tr>
   <tr>
-    <th class="mdl-data-table__cell--non-numeric">Trip</th>
+    <th class="mdl-data-table__cell--non-numeric">Listing</th>
     <th>Quantity</th>
     <th>Total Cost</th>
     <th class="mdl-data-table__cell--non-numeric">Date Ordered</th>
@@ -16,12 +16,12 @@
   </tr>
   </thead>
   <tbody>
-  <% @reservation.reservation_trips.each do |reservation_trip| %>
+  <% @reservation.reservation_listings.each do |reservation_listing| %>
       <tr>
-        <td class="mdl-data-table__cell--non-numeric"><%= link_to reservation_trip.trip.name, trip_path(reservation_trip.trip) %></td>
-        <td class="mdl-data-table__cell--non-numeric"><%= reservation_trip.quantity %></td>
-        <td><%= number_to_currency(reservation_trip.trip.total_cost * reservation_trip.quantity) %></td>
-        <td class="mdl-data-table__cell--non-numeric"><%= (reservation_trip.trip.created_at).to_formatted_s(:long) %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= link_to reservation_listing.listing.name, listing_path(reservation_listing.listing) %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= reservation_listing.quantity %></td>
+        <td><%= number_to_currency(reservation_listing.listing.total_cost * reservation_listing.quantity) %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= (reservation_listing.listing.created_at).to_formatted_s(:long) %></td>
         <td class="mdl-data-table__cell--non-numeric"><%= @reservation.status %></td>
       </tr>
   <% end %>

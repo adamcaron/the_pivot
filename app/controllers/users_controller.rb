@@ -50,7 +50,7 @@ class UsersController < ApplicationController
         redirect_to profile_path
       end
     else
-      flash[:error] = "Invalid input - Please try updating trip again"
+      flash[:error] = "Invalid input - Please try updating listing again"
       render :edit
     end
   end

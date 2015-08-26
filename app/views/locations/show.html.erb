@@ -1,24 +1,24 @@
 <article>
-  <h1 id="title">Plan Trips in <%= @trips.first.destination.continent %></h1>
+  <h1 id="title">Plan Listings in <%= @listings.first.destination.continent %></h1>
 
   <div class="demo-grid-1 mdl-grid">
 
-    <% @trips.each do |trip| %>
+    <% @listings.each do |listing| %>
 
         <div class="mdl-cell mdl-cell--4-col"><div id="whole-card" class="mdl-card mdl-shadow--2dp demo-card-wide">
           <div class="mdl-card__title">
-            <h3 class="mdl-card__title-text"><%= trip.activity.name %></h3>
+            <h3 class="mdl-card__title-text"><%= listing.activity.name %></h3>
           </div>
-          <div id ="<%= trip.activity.name.split.join("-").downcase %>-card">
+          <div id ="<%= listing.activity.name.split.join("-").downcase %>-card">
           </div>
           <div class="mdl-card__supporting-text">
-          <%= trip.activity.description %>
+          <%= listing.activity.description %>
           </div>
           <div >
             <img>
           </div>
           <div class="mdl-card__actions mdl-card--border">
-            <%= link_to "Trip Information", trip_path(trip), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+            <%= link_to "Listing Information", listing_path(listing), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
           </div>
         </div></div>
 

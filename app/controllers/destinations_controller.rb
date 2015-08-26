@@ -8,7 +8,7 @@ before_action :all_destinations, only: [:index, :show]
   def show
 
   @destination = Destination.find(params[:id])
-  @trips = @destination.trips
+  @listings = @destination.listings
   end
 
 
