@@ -53,6 +53,6 @@ class Admin::ListingsController < Admin::BaseController
   private
 
   def listing_params
-    params.require(:listing).permit(:name, :description, :listing_cost, :destination_id, :activity_id, :image_url, :image, :lat, :long)
+    params.require(:listing).permit(:name, :description, :listing_cost, :destination_id, :image_url, :image, :lat, :long)
   end
 end

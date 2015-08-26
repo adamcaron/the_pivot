@@ -19,11 +19,6 @@ RSpec.describe Listing, type: :model do
       expect(listing.listing_cost).to eq(5000.00)
     end
 
-    it 'has an activity name' do
-      listing = create_listing
-      expect(listing.activity.name).to eq("Hiking")
-    end
-
     it 'has an destination continent' do
       listing = create_listing
       expect(listing.destination.continent).to eq("South America")
@@ -31,24 +26,21 @@ RSpec.describe Listing, type: :model do
 
     it "does not create an listing with name missing" do
       destination = Destination.create(continent: "South America", description: "South American description")
-      activity = Activity.create(name: "Hiking", description: "Move your legs")
-      listing = Listing.create(destination_id: destination.id, activity_id: activity.id, listing_cost: 5000.00, total_cost: 5000.00 )
+      listing = Listing.create(destination_id: destination.id, listing_cost: 5000.00, total_cost: 5000.00 )
 
       expect(Listing.all.count).to eq(0)
     end
 
     it "does not create an listing with listing cost missing" do
       destination = Destination.create(continent: "South America", description: "South American description")
-      activity = Activity.create(name: "Hiking", description: "Move your legs")
-      listing = Listing.create(destination_id: destination.id, activity_id: activity.id, name: "Machu Picchu", total_cost: 5000.00 )
+      listing = Listing.create(destination_id: destination.id, name: "Machu Picchu", total_cost: 5000.00 )
 
       expect(Listing.all.count).to eq(0)
     end
 
     it "does not create a listing with too long of a name" do
       destination = Destination.create(continent: "South America", description: "South American description")
-      activity = Activity.create(name: "Hiking", description: "Move your legs")
-      listing = Listing.create(destination_id: destination.id, activity_id: activity.id,
+      listing = Listing.create(destination_id: destination.id,
                          name: "Machu PicchuUUUUELIELIaseraweraweraewLILIELILIIE", listing_cost: 5000.00 )
 
       expect(Listing.all.count).to eq(0)
@@ -59,8 +51,7 @@ RSpec.describe Listing, type: :model do
 
   def create_listing
     destination = Destination.create(continent: "South America", description: "South American description")
-    activity = Activity.create(name: "Hiking", description: "Move your legs")
-    Listing.create(destination_id: destination.id, activity_id: activity.id, name: "Machu Picchu", listing_cost: 5000.00, total_cost: 5000.00 )
+    Listing.create(destination_id: destination.id, name: "Machu Picchu", listing_cost: 5000.00, total_cost: 5000.00 )
   end
 
 

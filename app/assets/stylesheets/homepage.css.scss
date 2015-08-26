@@ -104,14 +104,7 @@
   color: white;
   text-shadow: 2px 2px 2px black;
 }
-.activity-text {
-  font-size: 2.5em;
-  margin-top:15px;
-  margin-left:90px;
-  color: white;
 
-text-shadow: 2px 2px 2px black;
-}
 .listing-text {
   font-size: 2.5em;
   margin-top:-40px;
@@ -217,11 +210,6 @@ margin-left: 5%;
   height: 400px;
 }
 
-.home-listing-reviews {
-  text-align: center;
-  height: 400px;
-}
-
 .bubble h4 {
   margin: 0px;
   padding: 1%;
@@ -269,13 +257,4 @@ margin-left: 5%;
     color: #fff;
     background: image-url('adam-headshot.jpg') bottom right 15% no-repeat #000000;
     background-size: 200px 200px;
-}
-
-.demo-card-square-reviews.mdl-card {
-    width: 500px;
-    height: 280px;
-}
-
-.demo-card-square-reviews h2 {
-    margin-bottom: 100px;
 }
