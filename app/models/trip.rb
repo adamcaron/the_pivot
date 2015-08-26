@@ -6,9 +6,7 @@ class Trip < ActiveRecord::Base
   belongs_to :destination
   belongs_to :activity
   belongs_to :user
-  belongs_to :orders
-  has_many :order_trips
-  has_many :orders, through: :order_trips
+  belongs_to :reservations
 
 
 

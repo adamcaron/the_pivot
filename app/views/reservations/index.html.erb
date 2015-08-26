@@ -1,0 +1,22 @@
+<table id="reservation-table" class="mdl-data-table mdl-js-data-table"> '
+  <thead>
+  <tr>
+    <th class="mdl-data-table__cell--non-numeric"></th>
+    <th>Order Number</th>
+    <th>Total Cost</th>
+    <th class="mdl-data-table__cell--non-numeric">Date Ordered</th>
+    <th class="mdl-data-table__cell--non-numeric">Status</th>
+  </tr>
+  </thead>
+  <tbody>
+  <%@reservations.each do|reservation| %>
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric"><%= link_to "View Order", reservation_path(reservation) %></td>
+      <td><%= link_to reservation.id, reservation_path(reservation) %></td>
+      <td><%= number_to_currency(reservation.sum_total_cost) %></td>
+      <td class="mdl-data-table__cell--non-numeric"><%= (reservation.created_at).to_formatted_s(:long) %></td>
+      <td class="mdl-data-table__cell--non-numeric"><%= reservation.status %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
