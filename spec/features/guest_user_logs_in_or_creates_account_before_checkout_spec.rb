@@ -1,7 +1,5 @@
 require 'rails_helper'
 
-require 'rails_helper'
-
 before :each do
   create_listings
   create_locations
