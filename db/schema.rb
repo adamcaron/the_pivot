@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826004320) do
+ActiveRecord::Schema.define(version: 20150826011315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,9 +33,9 @@ ActiveRecord::Schema.define(version: 20150826004320) do
     t.boolean  "gmaps"
     t.float    "lat"
     t.float    "long"
-    t.integer  "host_id"
     t.integer  "number_of_guests"
     t.integer  "housing_type_id"
+    t.integer  "host_id"
   end
 
   add_index "listings", ["housing_type_id"], name: "index_listings_on_housing_type_id", using: :btree
@@ -82,5 +82,6 @@ ActiveRecord::Schema.define(version: 20150826004320) do
   end
 
   add_foreign_key "listings", "locations"
+  add_foreign_key "listings", "users", column: "host_id"
   add_foreign_key "reservations", "users", column: "guest_id"
 end
