@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150813045722) do
+ActiveRecord::Schema.define(version: 20150825232852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,26 @@ ActiveRecord::Schema.define(version: 20150813045722) do
     t.text     "image_url"
   end
 
+  create_table "listings", force: :cascade do |t|
+    t.integer  "location_id"
+    t.float    "cost"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.text     "name"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.boolean  "gmaps"
+    t.float    "lat"
+    t.float    "long"
+    t.integer  "host_id"
+    t.integer  "housing_type_id"
+    t.integer  "number_of_guests"
+  end
+
+  add_index "listings", ["location_id"], name: "index_listings_on_location_id", using: :btree
+
   create_table "order_trips", force: :cascade do |t|
     t.integer "order_id"
     t.integer "trip_id"
@@ -41,14 +61,17 @@ ActiveRecord::Schema.define(version: 20150813045722) do
   add_index "order_trips", ["order_id"], name: "index_order_trips_on_order_id", using: :btree
   add_index "order_trips", ["trip_id"], name: "index_order_trips_on_trip_id", using: :btree
 
-  create_table "orders", force: :cascade do |t|
-    t.integer  "user_id"
+  create_table "reservations", force: :cascade do |t|
+    t.integer  "guest_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "status",     default: 0
+    t.integer  "listing_id"
+    t.string   "date_range"
   end
 
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+  add_index "reservations", ["guest_id"], name: "index_reservations_on_guest_id", using: :btree
+  add_index "reservations", ["listing_id"], name: "index_reservations_on_listing_id", using: :btree
 
   create_table "reviews", force: :cascade do |t|
     t.string   "name"
@@ -59,40 +82,16 @@ ActiveRecord::Schema.define(version: 20150813045722) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "trips", force: :cascade do |t|
-    t.integer  "destination_id"
-    t.integer  "activity_id"
-    t.float    "total_cost"
-    t.float    "trip_cost"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.text     "name"
-    t.text     "description"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.boolean  "gmaps"
-    t.float    "lat"
-    t.float    "long"
-  end
-
-  add_index "trips", ["activity_id"], name: "index_trips_on_activity_id", using: :btree
-  add_index "trips", ["destination_id"], name: "index_trips_on_destination_id", using: :btree
-
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "password_digest"
-    t.integer  "role",            default: 0
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.text     "full_name"
-    t.text     "address"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "host_id"
   end
 
-  add_foreign_key "order_trips", "orders"
-  add_foreign_key "order_trips", "trips"
-  add_foreign_key "orders", "users"
-  add_foreign_key "trips", "activities"
-  add_foreign_key "trips", "destinations"
+  add_foreign_key "listings", "destinations", column: "location_id"
+  add_foreign_key "order_trips", "listings", column: "trip_id"
+  add_foreign_key "order_trips", "reservations", column: "order_id"
+  add_foreign_key "reservations", "users", column: "guest_id"
 end
