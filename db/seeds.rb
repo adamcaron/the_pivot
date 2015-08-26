@@ -1,15 +1,15 @@
 
-Destination.create(continent: "North America", description: "North American continent description.",
+Location.create(continent: "North America", description: "North American continent description.",
                    image_url: "south-america.jpg" )
-Destination.create(continent: "South America", description: "South American continent description.",
+Location.create(continent: "South America", description: "South American continent description.",
                    image_url: "south-america.jpg" )
-Destination.create(continent: "Europe", description: "European continent description.",
+Location.create(continent: "Europe", description: "European continent description.",
                    image_url: "europe.jpg" )
-Destination.create(continent: "Asia", description: "Asian continent description.",
+Location.create(continent: "Asia", description: "Asian continent description.",
                    image_url: "asia.jpg" )
-Destination.create(continent: "Africa", description: "African continent description.",
+Location.create(continent: "Africa", description: "African continent description.",
                    image_url: "africa.jpg" )
-Destination.create(continent: "Oceania", description: "Oceanian continent description.",
+Location.create(continent: "Oceania", description: "Oceanian continent description.",
                    image_url: "oceania.jpg" )
 
 Activity.create(name: "Hiking", description: "We loven to do ze hikes.", image_url: "hiker.jpg" )

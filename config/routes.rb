@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root "welcome#index"
 
   namespace :admin do
-    resources :users, :trips, :orders
+    resources :users, :listings, :reservations
   end
 
   get '/admin/dashboard', to: 'admin/dashboard#index'
@@ -11,11 +11,9 @@ Rails.application.routes.draw do
 
   get '/profile', to: 'users#show'
 
-  resources :trips, only: [:index, :show]
+  resources :listings, only: [:index, :show]
 
-  resources :activities, only: [:index, :show]
-
-  resources :destinations, only: [:index, :show]
+  resources :locations, only: [:index, :show]
 
   post '/cart_trips', to: 'cart_trips#create'
 
@@ -33,5 +31,5 @@ Rails.application.routes.draw do
   delete '/logout', to: "sessions#destroy", as: "logout"
   delete '/cart', to: 'cart_trips#destroy'
 
-  resources :orders, only: [:new, :create, :index, :show]
+  resources :reservations, only: [:new, :create, :index, :show]
 end
