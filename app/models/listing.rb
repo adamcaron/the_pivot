@@ -1,10 +1,8 @@
 class Listing < ActiveRecord::Base
-  validates :listing_cost, :name, :destination_id,
-            :activity_id, presence: true
+  validates :listing_cost, :name, :destination_id, presence: true
   validates :name, uniqueness: true
   validates :name, length: { maximum: 25 }
   belongs_to :destination
-  belongs_to :activity
   belongs_to :user
   belongs_to :reservations
 

@@ -13,7 +13,7 @@ class ListingsController < ApplicationController
 
   def listing_params
     params.require(:listing).permit(:name, :description, :listing_cost,
-    :destination_id, :activity_id, :image, :lat, :long)
+    :destination_id, :image, :lat, :long)
   end
 
   def build_google_markers(data)
