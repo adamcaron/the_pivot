@@ -1,12 +1,24 @@
 require 'rails_helper'
 
-# As a guest customer, when I click on a lodging option,
-# I can see the details of that option with pictures, price, dates, etc.
+before :each do
+  visit root_path
+  select('Asia', from: 'Location')
+  page.execute_script %Q{ $('#from').trigger("focus") } # activate datetime picker
+  page.execute_script %Q{ $("a.ui-state-default:contains('15')").trigger("click") } # click on day 15click_on 'Search'
+  page.execute_script %Q{ $('#to').trigger("focus") } # activate datetime picker
+  page.execute_script %Q{ $("a.ui-state-default:contains('16')").trigger("click") } # click on day 15click_on 'Search'
+  click_button 'Search'
 
-  # visit listings_path
-  # click_link 'view_listing_details'
+  click_link 'Tiki Hut 3'
+end
 
-  # expect current_path to eq listing_path
-  # expect page.to have_content [picture]
-  # expect page.to have_content [price]
-  # expect page.to have_content [dates]
+feature 'Guest user sees details of a lodging option' do
+  scenario 'on listing show, not logged in' do
+    expect(current_path).to eq('tiki-hut-3')
+    expect(page).to have_content('Tiki Hut 3')
+    expect(page).to have_content('$300.00')
+    expect(page).to have_content('$300.00')
+    expect(page).to have_content('15')
+    expect(page).to have_content('16')
+  end
+end
