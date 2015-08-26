@@ -1,6 +1,6 @@
 class CreateDestinations < ActiveRecord::Migration
   def change
-    create_table :destinations do |t|
+    create_table :locations do |t|
       t.text :continent
       t.text :description
       t.float :lat
