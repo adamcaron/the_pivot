@@ -17,8 +17,8 @@ RSpec.describe Destination, type: :model do
     expect(destination).to_not be_valid
   end
 
-  it 'has an array of trips' do
-    expect(destination.trips).to eq([])
+  it 'has an array of listings' do
+    expect(destination.listings).to eq([])
   end
 
   it 'has an array of activities' do
