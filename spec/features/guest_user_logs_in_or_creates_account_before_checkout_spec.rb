@@ -14,7 +14,7 @@ before :each do
   page.execute_script %Q{ $("a.ui-state-default:contains('16')").trigger("click") } # click on day 15click_on 'Search'
   click_button 'Search'
 
-  click_link 'Tiki Hut 3'
+  click_link 'Tiki Hut 2'
 
   click_button 'Add to Cart'
 end
