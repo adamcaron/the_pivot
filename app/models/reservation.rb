@@ -1,7 +1,7 @@
-class Order < ActiveRecord::Base
+class Reservation < ActiveRecord::Base
   belongs_to :user
-  has_many :order_listings
-  has_many :listings, through: :order_listings
+  has_many :reservation_listings
+  has_many :listings, through: :reservation_listings
 
   attr_accessor :cart
 

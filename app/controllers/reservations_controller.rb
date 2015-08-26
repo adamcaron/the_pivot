@@ -8,7 +8,7 @@ class ReservationsController < ApplicationController
         #OrderTrip.create(trip_id: trip_id, reservation_id: reservation.id, quantity: quantity)
       end
       session[:cart] = {}
-      flash[:notice] = "Order was successfully placed!"
+      flash[:notice] = "Reservation was successfully placed!"
       redirect_to reservations_path
     else
       flash[:notice] = "You must be logged in to checkout!"
