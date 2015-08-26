@@ -11,21 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825232852) do
+ActiveRecord::Schema.define(version: 20150826000646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
     t.text     "name"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.text     "image_url"
-  end
-
-  create_table "destinations", force: :cascade do |t|
-    t.text     "continent"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -51,6 +43,12 @@ ActiveRecord::Schema.define(version: 20150825232852) do
   end
 
   add_index "listings", ["location_id"], name: "index_listings_on_location_id", using: :btree
+
+  create_table "locations", force: :cascade do |t|
+    t.text     "continent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "order_trips", force: :cascade do |t|
     t.integer "order_id"
@@ -90,7 +88,7 @@ ActiveRecord::Schema.define(version: 20150825232852) do
     t.integer  "host_id"
   end
 
-  add_foreign_key "listings", "destinations", column: "location_id"
+  add_foreign_key "listings", "locations"
   add_foreign_key "order_trips", "listings", column: "trip_id"
   add_foreign_key "order_trips", "reservations", column: "order_id"
   add_foreign_key "reservations", "users", column: "guest_id"
