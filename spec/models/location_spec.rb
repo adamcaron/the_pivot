@@ -20,9 +20,4 @@ RSpec.describe Location, type: :model do
   it 'has an array of trips' do
     expect(location.trips).to eq([])
   end
-
-  it 'has an array of activities' do
-    expect(location.activities).to eq([])
-  end
-
 end
