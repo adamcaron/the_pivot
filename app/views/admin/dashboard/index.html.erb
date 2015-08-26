@@ -11,9 +11,8 @@
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
                   <ul>
-                  <li><%= link_to "Create a Trip", new_admin_trip_path, class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %></li>
-                  <li><%= link_to "Create an Activity", '#', class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %></li>
-                  <li><%= link_to "Create a Destination", '#', class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %></li>
+                  <li><%= link_to "Create a Listing", new_admin_listing_path, class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %></li>
+                  <li><%= link_to "Create a Location", '#', class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %></li>
                   </ul>
                 </div>
              </div>
@@ -26,8 +25,7 @@
             <div class="mdl-card__actions mdl-card--border">
               <ul>
               <li><%= link_to "Edit Admin Profile", edit_user_path(@user), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %></li>
-              <li><%= link_to "Edit an Activity", '#', class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %></li>
-              <li><%= link_to "Edit a Destination", '#', class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %></li>
+              <li><%= link_to "Edit a Location", '#', class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %></li>
               </ul>
             </div>
         </div>
@@ -39,8 +37,8 @@
           </div>
           <div class="mdl-card__actions mdl-card--border">
           <ul>
-            <li><%= link_to "View All Orders", admin_orders_path, class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %></li>
-            <li><%= link_to "View All Trips", admin_trips_path, class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %></li>
+            <li><%= link_to "View All Reservations", admin_reservations_path, class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %></li>
+            <li><%= link_to "View All Listings", admin_listings_path, class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %></li>
           </ul>
           </div>
         </div>

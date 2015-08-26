@@ -1,0 +1,26 @@
+<table id="reservation-table" class="mdl-data-table mdl-js-data-table"> '
+  <thead>
+  <tr>
+    <th id="table-title" class="mdl-data-table__cell--non-numeric">Reservation # <%= @reservation.id %></th>
+    <th id="table-title" class="mdl-data-table__cell--non-numeric"></th>
+    <th id="table-title" class="mdl-data-table__cell--non-numeric"></th>
+    <th id="table-title" class="mdl-data-table__cell--non-numeric"></th>
+    <th id="table-title" class="mdl-data-table__cell--non-numeric"></th>
+  </tr>
+  <tr>
+    <th class="mdl-data-table__cell--non-numeric">Listing</th>
+    <th>Total Cost</th>
+    <th class="mdl-data-table__cell--non-numeric">Date Ordered</th>
+    <th class="mdl-data-table__cell--non-numeric">Status</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @reservation.reservation_listings.each do |reservation_listing| %>
+      <tr>
+        <td class="mdl-data-table__cell--non-numeric"><%= link_to reservation_listing.listing.name, listing_path(reservation_listing.listing) %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= (reservation_listing.listing.created_at).to_formatted_s(:long) %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= @reservation.status %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
