@@ -1,4 +1,9 @@
-module ListingsHelper
+module Helpers
+
+  def help
+    :available
+  end
+
   def create_listings
     3.times do |i|
       business_admin = User.create!(username: "business_admin_#{i}", password_digest: 'password')
@@ -15,6 +20,22 @@ module ListingsHelper
                       long:                 nil,
                       number_of_guests:     nil,
                       host_id:              business_admin.id)
+    end
+  end
+
+  def create_locations
+    places = [
+      'North America',
+      'South America',
+      'Europe',
+      'Africa',
+      'Asia',
+      'Australia',
+      'Antarctica'
+    ]
+
+    places.each do |place|
+      Location.create!(continent: place)
     end
   end
 end

@@ -1,23 +1,23 @@
 require 'rails_helper'
 
-before :each do
-  create_listings
-  create_locations
-
-  visit root_path
-  select('Asia', from: 'Location')
-  page.execute_script %Q{ $('#from').trigger("focus") } # activate datetime picker
-  page.execute_script %Q{ $("a.ui-state-default:contains('15')").trigger("click") } # click on day 15click_on 'Search'
-  page.execute_script %Q{ $('#to').trigger("focus") } # activate datetime picker
-  page.execute_script %Q{ $("a.ui-state-default:contains('16')").trigger("click") } # click on day 15click_on 'Search'
-  click_button 'Search'
-
-  click_link 'Tiki Hut 2'
-
-  click_button 'Add to Cart'
-end
-
 feature 'User checks out' do
+  before :each do
+    create_listings
+    create_locations
+
+    visit root_path
+    select('Asia', from: 'Location')
+    page.execute_script %Q{ $('#from').trigger("focus") } # activate datetime picker
+    page.execute_script %Q{ $("a.ui-state-default:contains('15')").trigger("click") } # click on day 15click_on 'Search'
+    page.execute_script %Q{ $('#to').trigger("focus") } # activate datetime picker
+    page.execute_script %Q{ $("a.ui-state-default:contains('16')").trigger("click") } # click on day 15click_on 'Search'
+    click_button 'Search'
+
+    click_link 'Tiki Hut 2'
+
+    click_button 'Add to Cart'
+  end
+
   scenario 'unregistered user' do
     expect(current_path).to eq(cart_path)
     click_button 'Checkout'
