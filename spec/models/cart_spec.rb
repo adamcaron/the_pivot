@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Order, type: :model do
 
   before :each do
-    destination = Destination.create(continent: "South America",
+    destination = Location.create(continent: "South America",
     description: "South American description")
     activity = Activity.create(name: "Hiking", description: "Move your legs")
     @trip = Trip.create(destination_id: destination.id, activity_id: activity.id,

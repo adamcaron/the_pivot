@@ -1,6 +1,6 @@
 class RemoveLatLongFromDestinations < ActiveRecord::Migration
   def change
-    remove_column :destinations, :lat
-    remove_column :destinations, :long
+    remove_column :locations, :lat
+    remove_column :locations, :long
   end
 end

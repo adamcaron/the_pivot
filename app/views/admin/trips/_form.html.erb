@@ -18,11 +18,11 @@
         </tr>
         <tr>
           <th class="mdl-data-table__cell--non-numeric"><%= f.label :trip_cost, "Trip Cost:" %></th>
-          <th class="mdl-data-table__cell--non-numeric"><%= f.label :destination_id, "Destination:" %></th>
+          <th class="mdl-data-table__cell--non-numeric"><%= f.label :destination_id, "Location:" %></th>
         </tr>
         <tr>
           <td class="mdl-data-table__cell--non-numeric"><%= f.number_field :trip_cost %></td>
-          <td class="mdl-data-table__cell--non-numeric"><%= f.select(:destination_id, Destination.all.map{ |d| ["#{d.continent}", d.id ] } ) %></td>
+          <td class="mdl-data-table__cell--non-numeric"><%= f.select(:destination_id, Location.all.map{ |d| ["#{d.continent}", d.id ] } ) %></td>
         </tr>
 
         <tr>
