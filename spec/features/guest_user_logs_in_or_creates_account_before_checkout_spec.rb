@@ -62,12 +62,10 @@ feature 'User checks out' do
 
     visit cart_path
 
-    click_button 'Checkout'
+    expect(click_button 'Checkout').to change(Reservation, :count).by(1)
 
     expect(current_path).to eq(reservations_path)
     expect(page).to have_content('Reservations')
-
-    expect(user.orders.count).to eq(1)
   end
 
   scenario 'registered user, already logged in' do
@@ -79,11 +77,9 @@ feature 'User checks out' do
 
     visit cart_path
 
-    click_button 'Checkout'
+    expect(click_button 'Checkout').to change(Reservation, :count).by(1)
 
     expect(current_path).to eq(reservations_path)
     expect(page).to have_content('Reservations')
-
-    expect(user.orders.count).to eq(1)
   end
 end
