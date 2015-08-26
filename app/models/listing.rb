@@ -1,11 +1,8 @@
 class Listing < ActiveRecord::Base
-  validates :listing_cost, :name, :destination_id, presence: true
+  validates :cost, :name, :location_id, presence: true
   validates :name, uniqueness: true
   validates :name, length: { maximum: 25 }
   belongs_to :location
-  belongs_to :user
-  belongs_to :reservations
-
 
 
   if Rails.env.production?
