@@ -1,25 +1,29 @@
 class Seed
   def self.start
     seed = Seed.new
-    seed.generate_listings
+    seed.generate_locations
     seed.generate_roles
     seed.generate_users
+    seed.generate_listings
     seed.generate_reservations
-    seed.generate_locations
   end
 
-  places = ['North America',
-            'South America',
-            'Europe',
-            'Africa',
-            'Asia',
-            'Australia',
-            'Antarctica']
+  def places
+    ['North America',
+     'South America',
+     'Europe',
+     'Africa',
+     'Asia',
+     'Australia',
+     'Antarctica']
+  end
 
 
-  role_types = ['registered_user',
-                'business_admin',
-                'platform_admin']
+  def role_types
+    ['registered_user',
+     'business_admin',
+     'platform_admin']
+  end
 
   def generate_locations
     places.each do |place|
@@ -35,8 +39,7 @@ class Seed
 
   def generate_users
     25.times do |i|
-      user = User.create!(username: "registered_user_#{i}", password_digest: 'password')
-      user.update!(host_id: user.id)
+      user = User.create!(username: "Registered_user_#{i}", password_digest: 'password')
       puts "User: #{user.username} created!"
     end
 
@@ -60,21 +63,29 @@ class Seed
 
       listing = Listing.create!(location_id:          location_ids,
                                 cost:                 100.00,
-                                name:                 ,
-                                image_file_name:      ,
-                                image_content_type:   ,
-                                image_file_size:      ,
-                                image_updated_at:     ,
-                                gmaps:                ,
-                                lat:                  ,
-                                long:                 ,
-                                number_of_guests:     ,
+                                name:                 "name_#{i}",
+                                image_file_name:      "image_file_name_#{i}",
+                                image_content_type:   "image_content_type_#{i}",
+                                image_file_size:      i,
+                                image_updated_at:     Date.today,
+                                gmaps:                [true, false].sample,
+                                lat:                  i,
+                                long:                 i,
+                                number_of_guests:     (1..8).to_a.sample,
                                 host_id:              business_admin.id)
       puts "Listing: Listing with host #{business_admin.id} created!"
     end
   end
 
   def generate_reservations
+    10.times do |i|
+      Reservation.create!(user_id:      User.first(10).sample.id,
+                          status:       ['Ordered', 'Paid', 'Completed'].sample,
+                          listing_id:   Listing.first(10).sample.id,
+                          start_date:   "",
+                          end_date:     ""
+                         )
+    end
 
   end
 
