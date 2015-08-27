@@ -1,102 +1,18 @@
-<div class="homepage">
 <div class="home-picture">
-</div>
-
-  <div id="homepage-icons" class="demo-grid-2 mdl-grid">
-    <div class="mdl-cell mdl-cell--4-col">
-      <div class="icons"><a href="<%=locations_path%>"><i class="icon-globe"></i></a></div>
-      <div class="destination-text"><span>The Destination</span></div>
-    </div>
-    <div class="mdl-cell mdl-cell--4-col">
-      <div class="icons"><a href="<%=listings_path%>"> <i class="icon-airplane"></i></a></div>
-      <div class="listing-text"><span>The Listing</span></div>
-    </div>
-  </div>
-
-<div class="home-about-us">
-
-  <div class="home-mission">
-    <div class="bubble">
-      <h4>What is Endangerous Outfitters?</h4>
-      <p><strong>Endangerous Outfitters</strong> is a <em>world-class guiding company</em> <br/>that provides tours <em>to the most remote places</em> on Earth <br/>
-      while providing <strong>high-end luxuries</strong> and <strong>local culture</strong> every step of the way.<br><br>We can transport you from suburbia to Siberia <br/>to <strong>hike among
-        tigers</strong>, <strong>hang glide through an F3 tornado</strong> on the American plains, <br/>or <strong>kayak down Angels Falls</strong> in South America.<br><br>
-      <strong>Go ahead and be endangerous:</strong> start your adventure today by browsing our <%= link_to "Locations", locations_path, class: "welcome-links" %>, or <%= link_to "Listings", listings_path, class: "welcome-links" %>.
+  <h2>
+    <span class="catchphrase">Book Lodging</span><br>
+    in the most obscure places on earth.
+  </h2>
+  <div class="search-area">
+    <%= form_tag listings_path, method: 'get' do %>
+      <p>
+        <%= select_tag :location_id, Location.all.map{ |l| ["#{l.continent}", l.id ] }, selected: params[:location] %>
+        <%= label_tag :from %>
+        <%= text_field_tag :from, params[:from] %>
+        <%= label_tag :to %>
+        <%= text_field_tag :to, params[:to] %>
+        <%= submit_tag "Search", :name => nil %>
       </p>
-    </div>
+    <% end %>
   </div>
-
-  <div class="bubble">
-    <h4>Who We Are</h4>
-    <div class="headshot-pics">
-      <div class="demo-grid-4 mdl-grid">
-        <div class="mdl-cell mdl-cell--3-col">
-          <div id="alex" class="mdl-card mdl-shadow--2dp demo-card-square">
-            <div class="mdl-card__title mdl-card--expand">
-              <h2 class="mdl-card__title-text">Alex Tideman</h2>
-            </div>
-            <div class="mdl-card__supporting-text">
-              Turing School of Software and Design
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                 href="https://github.com/alex-tideman">
-                View GitHub
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="mdl-cell mdl-cell--3-col">
-          <div id="max" class="mdl-card mdl-shadow--2dp demo-card-square">
-            <div class="mdl-card__title mdl-card--expand">
-              <h2 id="max-name" class="mdl-card__title-text">Max Millington</h2>
-            </div>
-            <div class="mdl-card__supporting-text">
-              Turing School of Software and Design
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                 href="https://github.com/maxmillington">
-                View GitHub
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="mdl-cell mdl-cell--3-col">
-          <div id="david" class="mdl-card mdl-shadow--2dp demo-card-square">
-            <div class="mdl-card__title mdl-card--expand">
-              <h2 class="mdl-card__title-text">David Shim</h2>
-            </div>
-            <div class="mdl-card__supporting-text">
-              Turing School of Software and Design
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                 href="https://github.com/dsshim">
-                View GitHub
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="mdl-cell mdl-cell--3-col">
-          <div id="adam" class="mdl-card mdl-shadow--2dp demo-card-square">
-            <div class="mdl-card__title mdl-card--expand">
-              <h2 class="mdl-card__title-text">Adam Caron</h2>
-            </div>
-            <div class="mdl-card__supporting-text">
-              Turing School of Software and Design
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                 href="https://github.com/adamcaron">
-                View Github
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
 </div>
