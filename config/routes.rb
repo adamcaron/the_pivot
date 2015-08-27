@@ -1,21 +1,9 @@
 Rails.application.routes.draw do
   root "welcome#index"
 
-  namespace :admin do
+  namespace   :admin do
     resources :users, :listings, :reservations
   end
-
-  get '/admin/dashboard', to: 'admin/dashboard#index'
-
-  resources :users, only: [:new, :create, :edit, :update]
-
-  get '/profile', to: 'users#show'
-
-  resources :listings, only: [:index, :show]
-
-  resources :locations, only: [:index, :show]
-
-  post '/cart', to: 'carts#create'
 
   resources :carts, only: [:create, :destroy] do
     member do
@@ -23,13 +11,22 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users,         only: [:new, :create, :edit, :update]
+  resources :listings,      only: [:index, :show]
+  resources :locations,     only: [:index, :show]
+  resources :reservations,  only: [:new, :create, :index, :show]
   resources :reviews
 
-  get '/cart', to: 'carts#show'
-  get '/login', to: "sessions#new"
-  post '/login', to: "sessions#create"
-  delete '/logout', to: "sessions#destroy", as: "logout"
-  delete '/cart', to: 'carts#destroy'
+  get     '/admin/dashboard', to: 'admin/dashboard#index'
 
-  resources :reservations, only: [:new, :create, :index, :show]
+  get     '/profile',         to: 'users#show'
+
+  get     '/cart',            to: 'carts#show'
+  post    '/cart',            to: 'carts#create'
+  delete  '/cart',            to: 'carts#destroy'
+
+  get     '/login',           to: "sessions#new"
+  post    '/login',           to: "sessions#create"
+  delete  '/logout',          to: "sessions#destroy", as: "logout"
+
 end

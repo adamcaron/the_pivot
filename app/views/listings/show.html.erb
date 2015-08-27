@@ -6,18 +6,14 @@
   <h1 id="title"><%= @listing.name %></h1>
 
   <div class = "listing-img">
-    <%= image_tag @listing.image, class: "listing-show-card" %>
+    <%= image_tag @listing.image_file_name, class: "listing-show-card" %>
   </div>
 
   <div class="mdl-grid">
     <div class="description mdl-cell mdl-cell--7-col">
 
-      <p id="listing-description">
-        <%= @listing.description %>
-      </p>
-
-      <h3 class="listing-subheader"><%= number_to_currency(@listing.listing_cost) %></h3>
-      <%= link_to "Book Listing", cart_path(listing_id: @listing.id), method: :post, class: "call-to-action" %>
+      <h3 class="listing-subheader"><%= number_to_currency(@listing.cost) %></h3>
+      <%= link_to "Book Listing", cart_listings_path(listing_id: @listing.id), method: :post, class: "call-to-action" %>
     </div>
 
     <div class="extras mdl-cell mdl-cell--5-col">
