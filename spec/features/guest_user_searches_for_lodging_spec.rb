@@ -2,6 +2,8 @@ require 'rails_helper'
 
 feature 'Guest user searches for lodging' do
   scenario 'on home page, not logged in' do
+    create_locations
+
     visit root_path
     select('Asia', from: 'location')
     page.execute_script %Q{ $('#from').trigger("focus") } # activate datetime picker
