@@ -6,6 +6,7 @@ class CartsController < ApplicationController
   end
 
   def create
+    @cart ||= Cart.new(session[:cart])
     listing = Listing.find(params[:listing_id])
     cart.add_listing(listing.id)
     session[:cart] = cart.contents
