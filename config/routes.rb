@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   get '/profile', to: 'users#show'
 
   resources :listings, only: [:index, :show]
-  post '/listings', to: 'listings#index'
 
   resources :locations, only: [:index, :show]
 

@@ -4,7 +4,7 @@
     in the most obscure places on earth.
   </h2>
   <div class="search-area">
-    <%= form_tag listings_path, method: 'post' do %>
+    <%= form_tag listings_path, method: 'get' do %>
       <%= select_tag(:location, options_for_select(Location.all.map{ |l| ["#{l.continent}", l.id ] }, selected: params[:location] )) %>
       <%= text_field_tag :from, params[:from] %>
       <%= text_field_tag :to, params[:to] %>
