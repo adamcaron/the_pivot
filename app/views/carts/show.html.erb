@@ -37,6 +37,9 @@
     </thead>
     <tbody>
       <tr>
+        <td><%= number_to_currency(@total_cost) %></td>
+      </tr>
+      <tr>
         <% if current_user %>
           <td id="checkout" class="mdl-data-table__cell--non-numeric"><%= link_to "Checkout", reservations_path, method: :post %></td>
         <% else %>
