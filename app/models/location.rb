@@ -1,5 +1,4 @@
 class Location < ActiveRecord::Base
-  validates :continent, :description , presence: true
-  validates :continent, uniqueness: true
+  validates :continent, presence: true
   has_many :listings
 end

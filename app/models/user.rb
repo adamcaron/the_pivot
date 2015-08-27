@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   has_secure_password
-  has_many :reservations
   validates :username, presence: true,
             uniqueness: true
+  has_many :reservations
   enum role: %w(default admin)
 
 end

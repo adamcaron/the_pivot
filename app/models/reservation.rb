@@ -1,7 +1,8 @@
 class Reservation < ActiveRecord::Base
-  belongs_to :user
-  has_many :reservation_listings
-  has_many :listings, through: :reservation_listings
+  belongs_to  :user
+  belongs_to  :listing
+
+  validates   :status, :listing_id, presence: true
 
   attr_accessor :cart
 
