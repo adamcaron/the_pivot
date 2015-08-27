@@ -6,12 +6,11 @@ class Cart
   end
 
   def add_listing(listing_id)
-    contents[listing_id.to_s] = 1
+    @contents[listing_id.to_s] = 1
   end
 
   def remove_listing(listing_id)
-    contents[listing_id.to_s] -= 1
-    contents.delete(listing_id.to_s) if contents[listing_id.to_s] == 0
+    @contents[listing_id.to_s] = 0
   end
 
   def reset
