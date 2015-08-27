@@ -5,7 +5,7 @@
   </h2>
   <div class="search-area">
     <%= form_tag listings_path, method: 'get' do %>
-      <%= select_tag :location_id, Location.all.map{ |l| ["#{l.continent}", l.id ] }, selected: params[:location] %>
+      <%= select_tag(:location, options_for_select(Location.all.map{ |l| ["#{l.continent}", l.id ] }, selected: params[:location] )) %>
       <%= text_field_tag :from, params[:from] %>
       <%= text_field_tag :to, params[:to] %>
       <%= submit_tag "Search", :name => nil %>
