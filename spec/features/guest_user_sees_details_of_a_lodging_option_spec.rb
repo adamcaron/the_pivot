@@ -3,8 +3,9 @@ require 'rails_helper'
 
 feature 'Guest user sees details of a lodging option' do
   before :each do
-    create_listings
     create_locations
+    create_listings
+
 
     visit root_path
     select('Asia', from: 'Location')
