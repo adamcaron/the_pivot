@@ -1,6 +1,10 @@
 class CartsController < ApplicationController
   attr_reader :cart
 
+  def show
+
+  end
+
   def create
     listing = Listing.find(params[:listing_id])
     cart.add_listing(listing.id)
