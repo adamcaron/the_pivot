@@ -3,16 +3,29 @@
     <span class="catchphrase">Book Lodging</span><br>
     in the most obscure places on earth.
   </h2>
+  <div class="search-area">
+    <%= form_tag listings_path, method: 'get' do %>
+      <p>
+        <%= select_tag :location_id, Location.all.map{ |l| ["#{l.continent}", l.id ] }, selected: params[:location] %>
+        <%= label_tag :from %>
+        <%= text_field_tag :from, params[:from] %>
+        <%= label_tag :to %>
+        <%= text_field_tag :to, params[:to] %>
+        <%= submit_tag "Search", :name => nil %>
+      </p>
+    <% end %>
+  </div>
 </div>
-<div class="search-area">
-  <%= form_tag listings_path, method: 'get' do %>
-    <p>
-      <%= select_tag :location_id, Location.all.map{ |l| ["#{l.continent}", l.id ] }, selected: params[:location] %>
-      <%= label_tag :from %>
-      <%= text_field_tag :from, params[:from] %>
-      <%= label_tag :to %>
-      <%= text_field_tag :to, params[:to] %>
-      <%= submit_tag "Search", :name => nil %>
-    </p>
-  <% end %>
+
+
+
+
+<!-- <div class="page-wrap">
+
+  Content!
+
 </div>
+
+<footer class="site-footer">
+  I'm the Sticky Footer.
+</footer> -->
