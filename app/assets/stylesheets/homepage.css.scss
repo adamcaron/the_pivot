@@ -1,3 +1,26 @@
+.catchphrase {
+  font-size: 1.3em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.home-picture h2 {
+  // Circular,"Helvetica Neue",Helvetica,Arial,sans-serif
+  // font-family: "Circular, Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: white;
+}
+
+.home-picture {
+  padding-top: 220px;
+  text-align: center;
+  height: 550px;
+  background: transparent image-url("homepage.png") no-repeat center -50px;
+  background-size: cover;
+  -moz-box-shadow:    0px 0px 40px 15px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 0px 0px 40px 15px rgba(0, 0, 0, 0.6);
+  box-shadow:         0px 0px 40px 15px rgba(0, 0, 0, 0.6);
+}
+
 #nav-bar {
   position:absolute;
   background-color: rgba(0,0,0,.4);
@@ -63,13 +86,4 @@
     box-shadow: white 1px 1px 1px;
     top: 13px;
     right: 0px;
-}
-
-.home-picture {
-  height: 550px;
-  background: transparent image-url("homepage.png") no-repeat center -50px;
-  background-size: cover;
-  -moz-box-shadow:    0px 0px 40px 15px rgba(0, 0, 0, 0.6);
-  -webkit-box-shadow: 0px 0px 40px 15px rgba(0, 0, 0, 0.6);
-  box-shadow:         0px 0px 40px 15px rgba(0, 0, 0, 0.6);
 }
