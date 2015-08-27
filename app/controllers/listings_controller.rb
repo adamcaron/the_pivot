@@ -9,14 +9,6 @@ class ListingsController < ApplicationController
     build_google_markers(@listings)
   end
 
-  private
-
-  def listing_params
-    params.require(:listing).permit(:name, :listing_cost,
-                                    :destination_id, :image,
-                                    :lat, :long)
-  end
-
   def build_google_markers(data)
     @hash = Gmaps4rails.build_markers(data) do |listing, marker|
       marker.lat listing.lat
@@ -24,5 +16,4 @@ class ListingsController < ApplicationController
       marker.infowindow "<a id='map-links' href='#{listing_url(listing)}'>#{listing.name}</a>"
     end
   end
-
 end

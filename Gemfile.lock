@@ -251,4 +251,5 @@ DEPENDENCIES
   unicorn
   web-console (~> 2.0)
 
-   1.10.2
+BUNDLED WITH
+   1.10.4
