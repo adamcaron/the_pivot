@@ -5,7 +5,7 @@ class ListingsController < ApplicationController
   end
 
   def index
-    @listings = Listing.all
+    @search_results = Listing.all.where location_id: params[:location]
     build_google_markers(@listings)
   end
 
