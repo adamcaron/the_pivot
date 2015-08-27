@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   def show
-    @listing = Listing.find(params[:id].to_i)
+    @listing = Listing.find(params[:id])
     build_google_markers(@listing)
   end
 

@@ -5,15 +5,11 @@
 <article>
   <h1>Listing Info:</h2>
   <h2 id="title"><%= @listing.name %></h1>
-  <ul>
-    <li>@listing.locations.first.continent</li>
-    <li>@listing.number_of_guests</li>
-  </ul>
 
   <div class = "listing-img">
-    # currently this exists as a single image. normally on airbnb listings there are multiple images. for our current situation it may make sense to keep it as a
+    <%# currently this exists as a single image. normally on airbnb listings there are multiple images. for our current situation it may make sense to keep it as a
     # single image. in the future we may want to expand it into multiple images per listing, which means this column would be an array type or images would
-    # get its own table in the database with a reference to listing_id
+    # get its own table in the database with a reference to listing_id %>
 
     <%= image_tag @listing.image_file_name, class: "listing-show-card" %>
   </div>
@@ -22,6 +18,10 @@
     <div class="description mdl-cell mdl-cell--7-col">
 
       <h3 class="listing-subheader"><%= number_to_currency(@listing.cost) %></h3>
+      <ul>
+        <li>Location: <%= Location.find(@listing.location_id).continent %></li>
+        <li>Number of Guests: <%= @listing.number_of_guests %></li>
+      </ul>
       <%= link_to "Book Listing", cart_path(listing_id: @listing.id), method: :post, class: "call-to-action" %>
     </div>
 

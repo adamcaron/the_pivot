@@ -32,7 +32,7 @@
             <h3 class="mdl-card__title-text"><%= result.name %></h3>
           </div>
           <div class="listings-card">
-            <%= image_tag listing.image_file_name, class: "listing-index-card" %>
+            <%= image_tag result.image_file_name, class: "listing-index-card" %>
           </div>
           <div class="mdl-card__actions mdl-card--border">
             <%= link_to "View Listing", listing_path(result.id), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
