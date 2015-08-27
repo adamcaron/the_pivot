@@ -2,7 +2,7 @@ class CartsController < ApplicationController
   attr_reader :cart
 
   def show
-    @listing = Listing.find(params[:listing_id])
+    @cart ||= Cart.new(session[:cart])
   end
 
   def create
