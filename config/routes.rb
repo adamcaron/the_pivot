@@ -5,11 +5,10 @@ Rails.application.routes.draw do
     resources :users, :listings, :reservations
   end
 
-  resources :carts, only: [:create, :destroy] do
-    member do
-      post :increment, :decrement
-    end
-  end
+  post    '/cart',            to: 'carts#create'
+  get     '/cart',            to: 'carts#show'
+  delete  '/cart',            to: 'carts#destroy'
+  resources :carts, only: [:create, :destroy]
 
   resources :listings,      only: [:index,  :show]
   resources :locations,     only: [:index,  :show]
@@ -18,10 +17,6 @@ Rails.application.routes.draw do
 
   get     '/admin/dashboard', to: 'admin/dashboard#index'
   get     '/profile',         to: 'users#show'
-
-  get     '/cart',            to: 'carts#show'
-  post    '/cart',            to: 'carts#create'
-  delete  '/cart',            to: 'carts#destroy'
 
   get     '/login',           to: "sessions#new"
   post    '/login',           to: "sessions#create"
