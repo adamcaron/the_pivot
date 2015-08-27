@@ -15,7 +15,7 @@
  *= require material
  */
 
-body, #container, .form-background{
+html, body, .form-background{
   height: 100%;
 }
 
@@ -206,8 +206,3 @@ select {
   padding: 8px 0;
 }
 
-#container .mdl-layout-title{
-  padding-left: 0;
-  margin-left: 19%;
-
-}
