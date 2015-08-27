@@ -15,9 +15,9 @@ Rails.application.routes.draw do
 
   resources :locations, only: [:index, :show]
 
-  post '/cart_trips', to: 'cart_trips#create'
+  post '/cart', to: 'carts#create'
 
-  resources :cart_trips, only: [:create, :destroy] do
+  resources :carts, only: [:create, :destroy] do
     member do
       post :increment, :decrement
     end
@@ -25,11 +25,11 @@ Rails.application.routes.draw do
 
   resources :reviews
 
-  get '/cart', to: 'cart_trips#index'
+  get '/cart', to: 'carts#show'
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy", as: "logout"
-  delete '/cart', to: 'cart_trips#destroy'
+  delete '/cart', to: 'carts#destroy'
 
   resources :reservations, only: [:new, :create, :index, :show]
 end

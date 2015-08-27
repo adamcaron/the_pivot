@@ -1,32 +1,20 @@
 class Cart
-  attr_reader :data
+  attr_reader :contents
 
-  def initialize(input_data = {})
-    @data = input_data || Hash.new
+  def initialize(contents)
+    @contents = contents || {}
   end
 
-  def listings
-    @data.map do |listing_id, quantity|
-      listing = Listing.find(listing_id)
-      CartListing.new(listing, quantity)
-    end
+  def add_listing(listing_id)
+    contents[listing_id.to_s] = 1
   end
 
-  def add_listing(listing)
-    data[listing.id.to_s] ||= 0
-    data[listing.id.to_s] += 1
+  def remove_listing(listing_id)
+    contents[listing_id.to_s] -= 1
+    contents.delete(listing_id.to_s) if contents[listing_id.to_s] == 0
   end
 
-  def remove_listing(listing)
-    data.except!(listing.id.to_s)
+  def reset
+    contents.clear
   end
-
-  def decrease_listing(listing)
-    if data[listing.id.to_s] && data[listing.id.to_s] > 1
-      data[listing.id.to_s] -= 1
-    else
-      data.except!(listing.id.to_s)
-    end
-  end
-
 end
