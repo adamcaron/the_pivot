@@ -11,14 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826011315) do
+ActiveRecord::Schema.define(version: 20150826232502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "housing_types", force: :cascade do |t|
-    t.string "name"
-  end
 
   create_table "listings", force: :cascade do |t|
     t.integer  "location_id"
@@ -34,11 +30,9 @@ ActiveRecord::Schema.define(version: 20150826011315) do
     t.float    "lat"
     t.float    "long"
     t.integer  "number_of_guests"
-    t.integer  "housing_type_id"
     t.integer  "host_id"
   end
 
-  add_index "listings", ["housing_type_id"], name: "index_listings_on_housing_type_id", using: :btree
   add_index "listings", ["location_id"], name: "index_listings_on_location_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
@@ -48,16 +42,17 @@ ActiveRecord::Schema.define(version: 20150826011315) do
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.integer  "guest_id"
+    t.integer  "user_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "status",     default: 0
     t.integer  "listing_id"
-    t.string   "date_range"
+    t.date     "start_date"
+    t.date     "end_date"
   end
 
-  add_index "reservations", ["guest_id"], name: "index_reservations_on_guest_id", using: :btree
   add_index "reservations", ["listing_id"], name: "index_reservations_on_listing_id", using: :btree
+  add_index "reservations", ["user_id"], name: "index_reservations_on_user_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "title"
@@ -83,5 +78,5 @@ ActiveRecord::Schema.define(version: 20150826011315) do
 
   add_foreign_key "listings", "locations"
   add_foreign_key "listings", "users", column: "host_id"
-  add_foreign_key "reservations", "users", column: "guest_id"
+  add_foreign_key "reservations", "users"
 end
