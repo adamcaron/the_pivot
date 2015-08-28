@@ -8,18 +8,24 @@
 <div class="demo-grid-2 mdl-grid">
 <div class="mdl-cell mdl-cell--6-col">
 <table id="cart-table" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-<thead>
-<tr>
-  <th id="name-col">Name</th>
-<th id="continent-col" class="mdl-data-table__cell--non-numeric">Location</th>
-<th id="price-col">Price</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td id="delete-link"><%= link_to "Remove", cart_path(@listing), method: :delete %></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th></th>
+      <th id="name-col">Name</th>
+      <th id="continent-col" class="mdl-data-table__cell--non-numeric">Location</th>
+      <th id="price-col">Price</th>
+      <th>Reservation Date(s)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="delete-link"><%= link_to "Remove", cart_path(@listing), method: :delete %></td>
+      <td><%= @listing.name %></td>
+      <td><%= @location %></td>
+      <td><%= number_to_currency(@listing.cost) %></td>
+      <td><%= @date_range %></td>
+    </tr>
+  </tbody>
 </table>
 </div>
 <div class="mdl-cell mdl-cell--6-col">
@@ -31,8 +37,11 @@
     </thead>
     <tbody>
       <tr>
+        <td><%= number_to_currency(@total_cost) %></td>
+      </tr>
+      <tr>
         <% if current_user %>
-          <td id="checkout" class="mdl-data-table__cell--non-numeric"><%= link_to "Checkout", reservations_path, method: :get %></td>
+          <td id="checkout" class="mdl-data-table__cell--non-numeric"><%= link_to "Checkout", reservations_path, method: :post %></td>
         <% else %>
           <td id="checkout" class="mdl-data-table__cell--non-numeric"><%= link_to "Checkout", new_user_path, method: :get %></td>
         <% end %>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root "welcome#index"
 
+  resources :reservations,  only: [:new, :create, :index,  :show]
   namespace :admin do
     resources :users, :listings, :reservations
   end
@@ -8,12 +9,10 @@ Rails.application.routes.draw do
   post    '/cart',            to: 'carts#create'
   get     '/cart',            to: 'carts#show'
   delete  '/cart',            to: 'carts#destroy'
-  resources :carts, only: [:create, :destroy]
 
   resources :listings,      only: [:index,  :show]
   resources :locations,     only: [:index,  :show]
   resources :users,         only: [:new,    :create, :edit,   :update]
-  resources :reservations,  only: [:new,    :create, :index,  :show]
 
   get     '/admin/dashboard', to: 'admin/dashboard#index'
   get     '/profile',         to: 'users#show'

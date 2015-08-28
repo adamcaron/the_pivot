@@ -9,6 +9,7 @@ class ReservationsController < ApplicationController
       end
       session[:cart] = {}
       flash[:notice] = "Reservation was successfully placed!"
+      session[:dates].clear
       redirect_to reservations_path
     else
       flash[:notice] = "You must be logged in to checkout!"
