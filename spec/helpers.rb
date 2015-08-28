@@ -6,7 +6,7 @@ module Helpers
 
   def create_listings
     3.times do |i|
-      business_admin = User.find_or_create_by!(username: "business_admin_#{i}", password_digest: 'password')
+      business_admin = User.find_or_create_by!(username: "business_admin_#{i}", password: 'password')
       business_admin.update!(host_id: business_admin.id)
       Listing.find_or_create_by!(location_id:          4,
                       cost:                 100.00,
