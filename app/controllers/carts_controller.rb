@@ -4,14 +4,16 @@ class CartsController < ApplicationController
   def show
     @cart ||= Cart.new(session[:cart])
 
-    listing_id = @cart.contents.keys.first.to_i
-    @listing ||= Listing.find(listing_id)
+    unless @cart.contents.empty?
+      listing_id = @cart.contents.keys.first.to_i
+      @listing ||= Listing.find(listing_id)
 
-    @location ||= Location.find(@listing.location_id).continent
-    @date_range = "#{session[:dates]["from"]} - #{session[:dates]["to"]}"
+      @location ||= Location.find(@listing.location_id).continent
+      @date_range = "#{session[:dates]["from"]} - #{session[:dates]["to"]}"
 
-    number_of_days = Date.strptime(session[:dates]["to"], '%m/%d/%Y') - Date.strptime(session[:dates]["from"], '%m/%d/%Y')
-    @total_cost = @listing.cost * number_of_days
+      number_of_days = Date.strptime(session[:dates]["to"], '%m/%d/%Y') - Date.strptime(session[:dates]["from"], '%m/%d/%Y')
+      @total_cost = @listing.cost * number_of_days
+    end
   end
 
   def create
