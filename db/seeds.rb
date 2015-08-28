@@ -71,7 +71,7 @@ class Seed
                                 gmaps:                [true, false].sample,
                                 lat:                  i,
                                 long:                 i,
-                                number_of_guests:     (1..8).to_a.sample,
+                                number_of_days:     (1..8).to_a.sample,
                                 host_id:              business_admin.id)
       puts "Listing: Listing with host #{business_admin.id} created!"
     end
