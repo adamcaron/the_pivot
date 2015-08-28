@@ -18,7 +18,7 @@ module Helpers
                       gmaps:                nil,
                       lat:                  nil,
                       long:                 nil,
-                      number_of_guests:     nil,
+                      number_of_days:       nil,
                       host_id:              business_admin.id)
     end
   end
