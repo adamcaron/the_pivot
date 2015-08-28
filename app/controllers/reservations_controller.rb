@@ -2,14 +2,19 @@ class ReservationsController < ApplicationController
 
   def create
     if current_user
-      reservation = current_user.reservations.create
-      session[:cart].each do |listing_id, quantity|
-        #need to revise; no order trip
-        #OrderTrip.create(trip_id: trip_id, reservation_id: reservation.id, quantity: quantity)
-      end
-      session[:cart] = {}
-      flash[:notice] = "Reservation was successfully placed!"
+      listing = Listing.find(params[:listing_id])
+      number_of_days = Date.strptime(session[:dates]["to"], '%m/%d/%Y') - Date.strptime(session[:dates]["from"], '%m/%d/%Y')
+      total_cost = listing.cost * number_of_days
+      current_user.reservations.create(user_id: current_user.id,
+                                       status: 1,
+                                       listing_id: listing.id,
+                                       start_date: session[:dates]["from"],
+                                       end_date: session[:dates]["to"],
+                                       total_cost: total_cost)
+
+      session[:cart].clear
       session[:dates].clear
+      flash[:notice] = "Reservation was successfully placed!"
       redirect_to reservations_path
     else
       flash[:notice] = "You must be logged in to checkout!"
