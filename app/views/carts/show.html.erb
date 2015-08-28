@@ -42,8 +42,8 @@
         <td><%= number_to_currency(@total_cost) %></td>
       </tr>
       <tr>
-        <% if current_user %>
-          <td id="checkout" class="mdl-data-table__cell--non-numeric"><%= link_to "Checkout", reservations_path, method: :post %></td>
+        <% if current_user && !@cart.contents.empty? %>
+          <td id="checkout" class="mdl-data-table__cell--non-numeric"><%= link_to "Checkout", reservations_path(listing_id: @listing.id), method: :post %></td>
         <% else %>
           <td id="checkout" class="mdl-data-table__cell--non-numeric"><%= link_to "Checkout", new_user_path, method: :get %></td>
         <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826232502) do
+ActiveRecord::Schema.define(version: 20150828012825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20150826232502) do
     t.boolean  "gmaps"
     t.float    "lat"
     t.float    "long"
-    t.integer  "number_of_guests"
+    t.integer  "number_of_days"
     t.integer  "host_id"
   end
 
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20150826232502) do
     t.integer  "listing_id"
     t.date     "start_date"
     t.date     "end_date"
+    t.float    "total_cost"
   end
 
   add_index "reservations", ["listing_id"], name: "index_reservations_on_listing_id", using: :btree
