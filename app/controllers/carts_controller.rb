@@ -4,7 +4,7 @@ class CartsController < ApplicationController
   def show
     if cart.contents.empty?
       flash[:empty_cart] = "You're cart is empty. Please add to cart before going to the cart page"
-      redirect_to listings_path
+      redirect_to root_path
     elsif session[:dates].values.include?(nil)
       flash[:empty_cart] = "You don't have any dates selected. Please select dates"
       redirect_to root_path
@@ -15,7 +15,7 @@ class CartsController < ApplicationController
   def create
     @cart ||= Cart.new(session[:cart])
     listing = Listing.find(params[:listing_id])
-    #session[:cart].clear
+    session[:cart].clear
     cart.add_listing(listing.id)
     session[:cart] = cart.contents
     redirect_to cart_path
