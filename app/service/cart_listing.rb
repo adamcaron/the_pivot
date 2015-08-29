@@ -4,7 +4,10 @@ class CartListing
   def initialize(cart, dates)
     @cart = cart
     @dates = dates
-    @listing = Listing.find(cart.keys.first.to_i)
+  end
+
+  def listing
+    Listing.find(cart.keys.first.to_i)
   end
 
   def valid?
@@ -12,10 +15,10 @@ class CartListing
   end
 
   def no_dates_selected
-    dates[:from].empty? ||
-      dates[:from].nil? ||
-      dates[:to].empty? ||
-      dates[:to].nil?
+    dates[:from].nil? ||
+      dates[:to].nil? ||
+      dates[:from].empty? ||
+      dates[:to].empty?
   end
 
   def date_range
