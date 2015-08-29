@@ -2,20 +2,16 @@ class CartsController < ApplicationController
   attr_reader :cart
 
   def show
-    @cart ||= Cart.new(session[:cart])
-
-    unless @cart.contents.empty?
-      listing_id = @cart.contents.keys.first.to_i
-      @listing ||= Listing.find(listing_id)
-
-      @location ||= Location.find(@listing.location_id).continent
-      @date_range = "#{session[:dates]["from"]} - #{session[:dates]["to"]}"
-
-      number_of_days = Date.strptime(session[:dates]["to"], '%m/%d/%Y') - Date.strptime(session[:dates]["from"], '%m/%d/%Y')
-      @total_cost = @listing.cost * number_of_days
+    if cart.contents.empty?
+      flash[:empty_cart] = "You're cart is empty. Please add to cart before going to the cart page"
+      redirect_to listings_path
+    elsif session[:dates].values.include?(nil)
+      flash[:empty_cart] = "You don't have any dates selected. Please select dates"
+      redirect_to root_path
     end
   end
 
+  # there is a cart helper_method in the application controller. is the line below def create or helper_method redundant?
   def create
     @cart ||= Cart.new(session[:cart])
     listing = Listing.find(params[:listing_id])
@@ -26,10 +22,8 @@ class CartsController < ApplicationController
   end
 
   def destroy
-    listing = Listing.find(params[:listing_id])
-    cart.remove_listing(listing.id)
-    session[:cart] = cart.contents
-    flash[:remove] = "Successfully removed #{listing.name} from cart."
-    redirect_to cart_path
+    session[:cart] = cart.contents.clear
+    flash[:remove] = "Successfully removed from cart."
+    redirect_to root_path
   end
 end
