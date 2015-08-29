@@ -2,12 +2,12 @@ class ReservationsController < ApplicationController
 
   def create
     if current_user
-      current_user.reservations.create(user_id: current_user.id,
-                                       status: 1,
-                                       listing_id: cart_listing.listing.id,
-                                       start_date: session[:dates]["from"],
-                                       end_date: session[:dates]["to"],
-                                       total_cost: cart_listing.total_cost)
+      current_user.reservations.create(user_id:     current_user.id,
+                                       status:      1,
+                                       listing_id:  cart_listing.listing.id,
+                                       start_date:  session[:dates]["from"],
+                                       end_date:    session[:dates]["to"],
+                                       total_cost:  cart_listing.total_cost)
 
       session[:cart].clear
       session[:dates].clear
