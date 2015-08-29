@@ -40,9 +40,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
     if @user.update(username: params[:user][:username],
-                    password: params[:user][:password],
-                    full_name:params[:user][:full_name],
-                    address:  params[:user][:address])
+                    password: params[:user][:password])
       flash[:notice] = "Profile updated!"
       if current_admin?
         redirect_to admin_dashboard_path
