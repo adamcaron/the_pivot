@@ -6,8 +6,13 @@ class ListingsController < ApplicationController
 
   def index
     session[:dates] = { to: params[:to], from: params[:from] }
-    @search_results = Listing.all.where location_id: params[:location]
-    build_google_markers(@listings)
+    if !cart_listing.valid?
+      flash[:invalid_search] = "Invalid search. Please try again"
+      redirect_to root_path
+    else
+      @search_results = Listing.all.where location_id: params[:location]
+      build_google_markers(@listings)
+    end
   end
 
   def build_google_markers(data)

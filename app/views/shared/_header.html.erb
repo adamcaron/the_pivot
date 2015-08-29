@@ -18,7 +18,7 @@
     <div class="mdl-layout-spacer"></div>
     <!-- Navigation -->
     <nav class="mdl-navigation">
-      <span id="cart-count" class="material-icons mdl-badge mdl-navigation__link"<% if !cart.contents.values.empty? %>data-badge="<%= cart.contents.values.reduce(:+) %>"><% end %><span class="mdl-navigation__link"><%= link_to "Cart", cart_path, class: "nav-bar-link" %></span></span>
+    <span id="cart-count" class="material-icons mdl-badge mdl-navigation__link"<% if @cart.contents.any? %>data-badge="<%= 1 %>"><% end %><span class="mdl-navigation__link"><%= link_to "Cart", cart_path, class: "nav-bar-link" %></span></span>
     </nav>
   </div>
   <div class="flash">

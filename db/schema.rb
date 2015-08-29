@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150828012825) do
+ActiveRecord::Schema.define(version: 20150829140139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 20150828012825) do
     t.boolean  "gmaps"
     t.float    "lat"
     t.float    "long"
-    t.integer  "number_of_days"
     t.integer  "host_id"
   end
 
@@ -39,6 +38,7 @@ ActiveRecord::Schema.define(version: 20150828012825) do
     t.text     "continent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "url"
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20150828012825) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "host_id"
+    t.string   "password"
   end
 
   add_foreign_key "listings", "locations"

@@ -15,12 +15,11 @@
   </tr>
   </thead>
   <tbody>
-  <% @reservation.reservation_listings.each do |reservation_listing| %>
       <tr>
-        <td class="mdl-data-table__cell--non-numeric"><%= link_to reservation_listing.listing.name, listing_path(reservation_listing.listing) %></td>
-        <td class="mdl-data-table__cell--non-numeric"><%= (reservation_listing.listing.created_at).to_formatted_s(:long) %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= link_to @reservation.listing.name, listing_path(@reservation.listing.id) %></td>
+
+        <td class="mdl-data-table__cell--non-numeric"><%= (@reservation.listing.created_at).to_formatted_s(:long) %></td>
         <td class="mdl-data-table__cell--non-numeric"><%= @reservation.status %></td>
       </tr>
-  <% end %>
   </tbody>
 </table>
