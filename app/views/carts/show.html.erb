@@ -1,56 +1,53 @@
 <div class="cart">
 <div class="cart-picture">
-<img>
+  <img>
 </div>
 <h3 id="cart-title">Cart</h3>
 
 <div class="cart-container">
-<div class="demo-grid-2 mdl-grid">
-<div class="mdl-cell mdl-cell--6-col">
-<table id="cart-table" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-  <thead>
-    <tr>
-      <th></th>
-      <th id="name-col">Name</th>
-      <th id="continent-col" class="mdl-data-table__cell--non-numeric">Location</th>
-      <th id="price-col">Price</th>
-      <th>Reservation Date(s)</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% unless @cart.contents.empty? %>
-    <tr>
-      <td id="delete-link"><%= link_to "Remove", cart_path(@listing), method: :delete %></td>
-      <td><%= @listing.name %></td>
-      <td><%= @location %></td>
-      <td><%= number_to_currency(@listing.cost) %></td>
-      <td><%= @date_range %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-</div>
-<div class="mdl-cell mdl-cell--6-col">
-  <table id="cart-total" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-    <thead>
-      <tr>
-        <th>Total Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= number_to_currency(@total_cost) %></td>
-      </tr>
-      <tr>
-        <% if current_user && !@cart.contents.empty? %>
-          <td id="checkout" class="mdl-data-table__cell--non-numeric"><%= link_to "Checkout", reservations_path(listing_id: @listing.id), method: :post %></td>
-        <% else %>
-          <td id="checkout" class="mdl-data-table__cell--non-numeric"><%= link_to "Checkout", login_path, method: :get %></td>
-        <% end %>
-      </tr>
-    </tbody>
-  </table>
-</div>
-</div>
+  <div class="demo-grid-2 mdl-grid">
+    <div class="mdl-cell mdl-cell--6-col">
+      <table id="cart-table" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <thead>
+          <tr>
+            <th></th>
+            <th id="name-col">Name</th>
+            <th id="continent-col" class="mdl-data-table__cell--non-numeric">Location</th>
+            <th id="price-col">Price per Night</th>
+            <th>Reservation Date(s)</th>
+          </tr>
+        </thead>
+        <tr>
+          <td id="delete-link"><%= link_to "Remove", cart_path, method: :delete %></td>
+          <td><%= cart_listing.name %></td>
+          <td><%= cart_listing.location %></td>
+          <td><%= number_to_currency(cart_listing.cost_per_day) %></td>
+          <td><%= cart_listing.date_range %></td> <tbody>
+        </tr>
+          </tbody>
+      </table>
+    </div>
+    <div class="mdl-cell mdl-cell--6-col">
+      <table id="cart-total" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <thead>
+          <tr>
+            <th>Total Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= number_to_currency(cart_listing.total_cost) %></td>
+          </tr>
+          <tr>
+            <% if current_user %>
+              <td id="checkout" class="mdl-data-table__cell--non-numeric"><%= link_to "Checkout", reservations_path(cart_listing.listing.id), method: :post %></td>
+            <% else %>
+              <td id="checkout" class="mdl-data-table__cell--non-numeric"><%= link_to "Checkout", login_path, method: :get %></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 </div>
