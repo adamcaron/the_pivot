@@ -21,7 +21,11 @@
       <ul>
         <li>Location: <%= Location.find(@listing.location_id).continent %></li>
       </ul>
-      <%= link_to "Book Listing", cart_path(listing_id: @listing.id), method: :post, class: "call-to-action" %>
+      <%= form_tag cart_path(listing_id: @listing.id) do %>
+        <%= hidden_field_tag :book_from, params[:book_from] %>
+        <%= hidden_field_tag :book_to, params[:book_to] %>
+        <%= submit_tag "Book Listing", class: :"call-to-action" %>
+      <% end %>
     </div>
 
     <div class="extras mdl-cell mdl-cell--5-col">

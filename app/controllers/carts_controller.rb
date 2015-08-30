@@ -16,7 +16,7 @@ class CartsController < ApplicationController
     @cart ||= Cart.new(session[:cart])
     listing = Listing.find(params[:listing_id])
     session[:cart].clear unless session[:cart].nil?
-    cart.add_listing(listing.id)
+    cart.add_listing(listing.id, params[:book_from], params[:book_to])
     session[:cart] = cart.contents
     redirect_to cart_path
   end
