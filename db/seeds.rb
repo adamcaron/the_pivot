@@ -39,12 +39,12 @@ class Seed
 
   def generate_users
     25.times do |i|
-      user = User.find_or_create_by!(username: "Registered_user_#{i}", password: 'password')
+      user = User.find_or_create_by!(username: "Registered_user_#{i}", password_digest: 'password')
       puts "User: #{user.username} created!"
     end
 
     5.times do |i|
-      platform_admin = User.find_or_create_by!(username: "platform_admin_#{i}", password: 'password')
+      platform_admin = User.find_or_create_by!(username: "platform_admin_#{i}", password_digest: 'password')
       puts "User: #{platform_admin.username} created!"
     end
 
@@ -57,7 +57,7 @@ class Seed
 
   def generate_listings
     25.times do |i|
-      business_admin = User.find_or_create_by!(username: "business_admin_#{i}", password: 'password')
+      business_admin = User.find_or_create_by!(username: "business_admin_#{i}", password_digest: 'password')
       business_admin.update!(host_id: business_admin.id)
       puts "User: #{business_admin.username} created!"
 
@@ -77,7 +77,7 @@ class Seed
   end
 
   def generate_reservations
-    10.times do |i|
+    10.times do
       Reservation.find_or_create_by!(user_id:      User.first(10).sample.id,
                           status:       ['Ordered', 'Paid', 'Completed'].sample,
                           listing_id:   Listing.first(10).sample.id,
