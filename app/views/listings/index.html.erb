@@ -35,7 +35,7 @@
             <%= image_tag result.image_file_name, class: "listing-index-card" %>
           </div>
           <div class="mdl-card__actions mdl-card--border">
-            <%= link_to "View Listing", listing_path(result.id), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+            <%= link_to "View Listing", listing_path(result.id, book_from: params[:from], book_to: params[:to]), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
           </div>
         </div></div>
 
