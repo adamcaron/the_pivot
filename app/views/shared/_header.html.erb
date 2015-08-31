@@ -2,11 +2,8 @@
   <div class="mdl-layout__header-row">
     <!-- Title -->
     <nav class="mdl-navigation">
-      <% if registered_user? || business_admin? || platform_admin? %>
-          <span id="username-link" class="mdl-navigation__link"><%= link_to current_user.username, admin_dashboard_path, class: "username-link" %></span>
-          <span class="mdl-navigation__link"><%= link_to "Logout", logout_path, method: :delete, class: "nav-bar-link" %></span>
-      <% elsif current_user %>
-          <span class="mdl-navigation__link"><%= link_to current_user.username, profile_path, class: "username-link" %></span>
+      <% if current_user %>
+          <span class="mdl-navigation__link"><%= link_to current_user.username, dashboard_path, class: "username-link" %></span>
           <span class="mdl-navigation__link"><%= link_to "Logout", logout_path, method: :delete, class: "nav-bar-link" %></span>
       <% else %>
           <span class="mdl-navigation__link"><%= link_to "Login", login_path, class: "nav-bar-link" %></span>
