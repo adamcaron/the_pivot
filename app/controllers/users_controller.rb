@@ -21,6 +21,7 @@ class UsersController < ApplicationController
       redirect_to '/404'
     else
       @user = User.find(current_user.id)
+
     end
   end
 

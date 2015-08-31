@@ -8,10 +8,11 @@ class PermissionService
   def allow?(controller, action)
     @controller = controller
     @action = action
+
     if user && user.business_admin?
       business_admin_permissions
     elsif user.registered_user?
-      registered_user_persmissions
+      registered_user_permissions
     else
       guest_user_permissions
     end
@@ -32,6 +33,6 @@ class PermissionService
   end
 
   def guest_user_permissions
-
+    return true if controller == 'welcome' && action == 'index'
   end
 end
