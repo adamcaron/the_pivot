@@ -11,7 +11,7 @@ class PermissionService
     if user && user.business_admin?
       business_admin_permissions
     elsif user.registered_user?
-      registered_user_persmissions
+      registered_user_permissions
     else
       guest_user_permissions
     end
@@ -24,14 +24,15 @@ class PermissionService
   end
 
   def business_admin_permissions
-    # return true if controller == 'listing' && action == 'index'
+    registered_user_permissions
   end
 
   def registered_user_permissions
     return true if controller == 'listings' && action.in?(%w(new create))
+    guest_user_permissions
   end
 
   def guest_user_permissions
-
+    return true if controller == 'welcome' && action == 'index'
   end
 end

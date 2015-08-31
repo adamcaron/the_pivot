@@ -13,14 +13,9 @@ class ApplicationController < ActionController::Base
   helper_method :cart_listing
 
   def current_user
-    User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   helper_method :current_user
-
-  def current_admin?
-    current_user && current_user.admin?
-  end
-  helper_method :current_admin?
 
   def generate_cart
     @cart ||= Cart.new(session[:cart])
@@ -31,12 +26,12 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize!
-    redirect_to root_url, danger: "You don't know me." unless authorize?
+    redirect_to root_url, danger: "You don't know me." unless authorized?
   end
 
   private
 
-  def authorize?
+  def authorized?
     current_permission.allow?(params[:controller], params[:action])
   end
 end
