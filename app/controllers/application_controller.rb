@@ -1,8 +1,11 @@
 class ApplicationController < ActionController::Base
   before_action :generate_cart
+  before_action :authorize!
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+
+  add_flash_types :success, :info, :warning, :danger
 
   def cart_listing
     @cart_listing ||= CartListing.new(session[:cart], session[:dates])
@@ -21,5 +24,19 @@ class ApplicationController < ActionController::Base
 
   def generate_cart
     @cart ||= Cart.new(session[:cart])
+  end
+
+  def current_permission
+    @current_permission ||= PermissionService.new(current_user)
+  end
+
+  def authorize!
+    redirect_to root_url, danger: "You don't know me." unless authorize?
+  end
+
+  private
+
+  def authorize?
+    current_permission.allow?(params[:controller], params[:action])
   end
 end
