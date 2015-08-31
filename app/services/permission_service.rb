@@ -8,24 +8,27 @@ class PermissionService
   def allow?(controller, action)
     @controller = controller
     @action = action
-    if user.business_admin?
+    if user && user.business_admin?
       business_admin_permissions
     elsif user.registered_user?
       registered_user_persmissions
     else
       guest_user_permissions
     end
-    # return true if controller == 'listing' && action == 'index'
   end
 
   private
 
-  def business_admin_permissions
+  def platform_admin_permissions
 
   end
 
-  def registered_user_permissions
+  def business_admin_permissions
+    # return true if controller == 'listing' && action == 'index'
+  end
 
+  def registered_user_permissions
+    return true if controller == 'listings' && action.in?(%w(new create))
   end
 
   def guest_user_permissions

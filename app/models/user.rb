@@ -8,14 +8,14 @@ class User < ActiveRecord::Base
   has_many :roles, through: :user_roles
 
   def platform_admin?
-    roles.exists?(name: "platform_admin")
+    roles.exists?(title: "platform_admin")
   end
 
   def business_admin?
-    roles.exists?(name: "business_admin")
+    roles.exists?(title: "business_admin")
   end
 
   def registered_user?
-    roles.exists?(name: "registered_user")
+    roles.exists?(title: "registered_user")
   end
 end
