@@ -38,14 +38,22 @@ class Seed
   end
 
   def generate_users
+    registered_user = Role.find_by(title: "registered_user")
+    business_admin = Role.find_by(title: "business_admin")
+    platform_admin = Role.find_by(title: "platform_admin")
+
     25.times do |i|
-      user = User.find_or_create_by!(username: "Registered_user_#{i}", password_digest: 'password')
+      user = User.create(username: "Registered_user_#{i}", password: 'password')
+      user.roles << registered_user
       puts "User: #{user.username} created!"
     end
 
     5.times do |i|
-      platform_admin = User.find_or_create_by!(username: "platform_admin_#{i}", password_digest: 'password')
-      puts "User: #{platform_admin.username} created!"
+      platform_admin_user = User.create(username: "platform_admin_#{i}", password: 'password')
+      platform_admin_user.roles << registered_user
+      platform_admin_user.roles << business_admin
+      platform_admin_user.roles << platform_admin
+      puts "User: #{platform_admin_user.username} created!"
     end
 
   end
@@ -56,12 +64,16 @@ class Seed
 
 
   def generate_listings
+    business_user = Role.find_by(title: "business_admin")
+    registered_user = Role.find_by(title: "registered_user")
     25.times do |i|
-      business_admin = User.find_or_create_by!(username: "business_admin_#{i}", password_digest: 'password')
+      business_admin = User.create(username: "business_admin_#{i}", password: 'password')
+      business_admin.roles << registered_user
+      business_admin.roles << business_user
       business_admin.update!(host_id: business_admin.id)
       puts "User: #{business_admin.username} created!"
 
-      listing = Listing.find_or_create_by!(location_id:          location_ids,
+      Listing.find_or_create_by!(location_id:          location_ids,
                                 cost:                 100.00,
                                 name:                 "name_#{i}",
                                 image_file_name:      "image_file_name_#{i}",
