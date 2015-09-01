@@ -15,9 +15,9 @@
     <div class="mdl-layout-spacer"></div>
     <!-- Navigation -->
     <nav class="mdl-navigation">
-    <%# if current_user %>
-      <!--<span class="mdl-navigation__link"><%#= link_to "Host Your Space", new_listing_path, class: "nav-bar-link" %></span>-->
-    <%# end %>
+    <% if current_user %>
+      <span class="mdl-navigation__link"><%= link_to "Host Your Space", new_listing_path, class: "nav-bar-link" %></span>
+    <% end %>
     <span id="cart-count" class="material-icons mdl-badge mdl-navigation__link"<% if @cart.contents.any? %>data-badge="<%= 1 %>"><% end %><span class="mdl-navigation__link"><%= link_to "Cart", cart_path, class: "nav-bar-link" %></span></span>
     </nav>
   </div>

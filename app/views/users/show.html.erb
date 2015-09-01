@@ -1,27 +1,57 @@
 <div class="dashboard">
 <article>
-  <h1 id="title"><%= @user.username %>'s Profile Page</h1>
+  <h1 id="title"><%= @user.username.capitalize %>'s Dashboard</h1>
   <div class="demo-grid-2 mdl-grid">
-    <div class="mdl-cell mdl-cell--6-col">
+
+    <div class="mdl-cell mdl-cell--4-col">
       <div id="user-card" class="mdl-card mdl-shadow--2dp demo-card-wide">
         <div class= "mdl-card__title">
-          <h3 class="mdl-card__title-text">Edit</h3>
+          <h3 class="mdl-card__title-text">Manage My Profile</h3>
         </div>
         <div class="mdl-card__actions mdl-card--border">
           <%= link_to "Edit Profile", edit_user_path(@user), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
         </div>
       </div>
     </div>
-    <div class="mdl-cell mdl-cell--6-col">
+
+    <div class="mdl-cell mdl-cell--4-col">
       <div id="user-card" class="mdl-card mdl-shadow--2dp demo-card-wide">
         <div class= "mdl-card__title">
-          <h3 class="mdl-card__title-text">View</h3>
+          <h3 class="mdl-card__title-text">Manage My Reservations</h3>
         </div>
         <div class="mdl-card__actions mdl-card--border">
           <%= link_to "View All Reservations", reservations_path, class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
         </div>
       </div>
     </div>
+
+    <% if @user.business_admin? %>
+      <div class="mdl-cell mdl-cell--4-col">
+        <div id="user-card" class="mdl-card mdl-shadow--2dp demo-card-wide">
+          <div class= "mdl-card__title">
+            <h3 class="mdl-card__title-text">Manage My Listings</h3>
+          </div>
+          <div class="mdl-card__actions mdl-card--border">
+          </div>
+        </div>
+      </div>
+    <% end %>
+
   </div>
+
+  <% if @user.platform_admin? %>
+    <div class="demo-grid-2 mdl-grid">
+      <div class="mdl-cell mdl-cell--12-col">
+        <div id="user-card" class="mdl-card mdl-shadow--2dp demo-card-wide">
+          <div class= "mdl-card__title">
+            <h3 class="mdl-card__title-text">Manage 'Way Out There'</h3>
+          </div>
+          <div class="mdl-card__actions mdl-card--border">
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
 </article>
 </div>
