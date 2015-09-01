@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get     '/cart',            to: 'carts#show'
   delete  '/cart',            to: 'carts#destroy'
 
-  resources :listings,      only: [:index,  :show,   :create]
+  resources :listings,      only: [:index,  :show,   :new,    :create]
   resources :locations,     only: [:index,  :show]
   resources :users,         only: [:new,    :create, :edit,   :update]
 
