@@ -8,6 +8,7 @@ class PermissionService
   def allow?(controller, action)
     @controller = controller
     @action = action
+
     if user && user.business_admin?
       business_admin_permissions
     elsif user.registered_user?

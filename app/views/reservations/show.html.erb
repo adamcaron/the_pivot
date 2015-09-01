@@ -5,7 +5,6 @@
     <th id="table-title" class="mdl-data-table__cell--non-numeric"></th>
     <th id="table-title" class="mdl-data-table__cell--non-numeric"></th>
     <th id="table-title" class="mdl-data-table__cell--non-numeric"></th>
-    <th id="table-title" class="mdl-data-table__cell--non-numeric"></th>
   </tr>
   <tr>
     <th class="mdl-data-table__cell--non-numeric">Listing</th>
@@ -16,10 +15,18 @@
   </thead>
   <tbody>
       <tr>
-        <td class="mdl-data-table__cell--non-numeric"><%= link_to @reservation.listing.name, listing_path(@reservation.listing.id) %></td>
-
-        <td class="mdl-data-table__cell--non-numeric"><%= (@reservation.listing.created_at).to_formatted_s(:long) %></td>
-        <td class="mdl-data-table__cell--non-numeric"><%= @reservation.status %></td>
+        <td class="mdl-data-table__cell--non-numeric">
+          <%= link_to @reservation.listing.name, listing_path(@reservation.listing.id) %>
+        </td>
+        <td class="mdl-data-table__cell--non-numeric">
+          <%= number_to_currency(@reservation.total_cost) %>
+        </td>
+        <td class="mdl-data-table__cell--non-numeric">
+          <%= (@reservation.listing.created_at).to_formatted_s(:long) %>
+        </td>
+        <td class="mdl-data-table__cell--non-numeric">
+          <%= @reservation.status %>
+        </td>
       </tr>
   </tbody>
 </table>
