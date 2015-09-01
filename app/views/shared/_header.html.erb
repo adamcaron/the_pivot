@@ -2,6 +2,7 @@
   <div class="mdl-layout__header-row">
     <!-- Title -->
     <nav class="mdl-navigation">
+
       <% if current_user %>
           <span class="mdl-navigation__link"><%= link_to current_user.username, dashboard_path, class: "username-link" %></span>
           <span class="mdl-navigation__link"><%= link_to "Logout", logout_path, method: :delete, class: "nav-bar-link" %></span>
