@@ -10,12 +10,11 @@ Rails.application.routes.draw do
   get     '/cart',            to: 'carts#show'
   delete  '/cart',            to: 'carts#destroy'
 
-  resources :listings,      only: [:index,  :show]
+  resources :listings,      only: [:index,  :show,   :create]
   resources :locations,     only: [:index,  :show]
   resources :users,         only: [:new,    :create, :edit,   :update]
 
-  get     '/admin/dashboard', to: 'admin/dashboard#index'
-  get     '/profile',         to: 'users#show'
+  get     '/dashboard',         to: 'users#show'
 
   get     '/login',           to: "sessions#new"
   post    '/login',           to: "sessions#create"
