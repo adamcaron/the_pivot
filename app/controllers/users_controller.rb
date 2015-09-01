@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
+      @user.roles << Role.find_by(title: "registered_user")
       flash[:notice] = "Welcome back #{@user.username}!"
       redirect_to root_path
     else
@@ -43,11 +44,7 @@ class UsersController < ApplicationController
     if @user.update(username: params[:user][:username],
                     password: params[:user][:password])
       flash[:notice] = "Profile updated!"
-      if current_admin?
-        redirect_to admin_dashboard_path
-      else
-        redirect_to profile_path
-      end
+      redirect_to dashboard_path
     else
       flash[:error] = "Invalid input - Please try updating listing again"
       render :edit
