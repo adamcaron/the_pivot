@@ -38,7 +38,7 @@
   margin: 0;
   letter-spacing: 0.02em;
   font-family: 'Yellowtail', cursive;
-  font-size: 48px;
+  font-size: 3em;
   font-weight: 200;
 }
 
@@ -65,7 +65,26 @@ nav#main-links {
   box-shadow:         inset 0px 5px 20px 0px rgba(0,0,0,0.3);
 }
 
-.nav-bar-link {
+.host-link {
+  color: white;
+  background-color: rgb(0, 122, 135);
+  font-size: 1em;
+  text-decoration: none;
+  height: 20px;
+  padding: 4px 15px 4px 15px;
+  border-bottom-color: rgb(0, 79, 88);
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+.host-link:hover {
+  background-color: rgb(0, 154, 171);
+  text-decoration: none;
+}
+
+.navbar-link {
     color: white;
     font-size: 1.1em;
     text-decoration: none;
@@ -74,7 +93,8 @@ nav#main-links {
     padding: 9px 12px 0 12px;
 }
 
-.nav-bar-link, .nav-bar-link:visited, .nav-bar-link:link, #logo, #logo:visited, #logo:link {
+.navbar-link, .navbar-link:visited, .navbar-link:link,
+#logo, #logo:visited, #logo:link, .host-link, .host-link:visited, .host-link:link {
     color: white;
 }
 
