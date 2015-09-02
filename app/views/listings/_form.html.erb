@@ -1,5 +1,5 @@
 <article>
-  <%= form_for([:admin, @listing], html: { multipart: true }) do |f| %>
+  <%= form_for(@listing, html: { multipart: true }) do |f| %>
       <table id = "whole-card" class="mdl-data-table mdl-js-data-table edit-listing-table">
         <thead>
         <tr>
@@ -23,7 +23,9 @@
           <!-- <th class="mdl-data-table__cell--non-numeric"><%#= f.label :long, "Longitude:" %></th> -->
         </tr>
         <tr>
-          <td class="mdl-data-table__cell--non-numeric"><%= f.number_field :location_id %></td>
+          <td class="mdl-data-table__cell--non-numeric">
+            <%= f.select(:location_id, Location.all.map{ |l| ["#{l.continent}", l.id ] }) %>
+          </td>
           <td class="mdl-data-table__cell--non-numeric"></td>
           <!-- <td class="mdl-data-table__cell--non-numeric"><%#= f.number_field :lat %></td> -->
           <!-- <td class="mdl-data-table__cell--non-numeric"><%#= f.number_field :long %></td> -->
