@@ -28,7 +28,6 @@ class ListingsController < ApplicationController
       redirect_to root_path
     else
       @search_results = Listing.all.where location_id: params[:location]
-      build_google_markers(@listings)
     end
   end
 
