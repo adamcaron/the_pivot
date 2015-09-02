@@ -18,6 +18,32 @@ class Seed
      'Antarctica']
   end
 
+  def listing_cost
+    [100.00, 250.00, 199.50, 99.99, 125.59, 485.50, 299.00, 110.00, 109.01, 222.00, 175.75]
+  end
+
+  def listing_names_first
+    ['Outstanding', 'Awesome', 'Ambiguous', 'Nondescript', 'Radiant', 'Secluded', 'Out-of-the-way',
+     'Ramshackle', 'Splendid', 'Spacious', 'Quaint', 'Romantic', 'Remote', 'Isolated', 'Abandoned']
+  end
+
+  def listing_names_last
+    ['Tent', 'Cabana', 'Hut', 'Igloo', 'Cottage', 'Barn', 'Hole', 'Hideout', 'Compound', 'Barracks',
+     'Oasis', 'House boat', 'Hovercraft', 'Cave', 'Grotto', 'Garden', 'Room', 'Guest House', 'Missile Silo']
+  end
+
+  def user_first_names
+    ['Apple', 'Moonunit', 'Ginger', 'Osirus', 'Maximus', 'Door', 'Persnipity', 'Joony', 'Demmy',
+     'Purple', 'Whisper', 'Cry', 'Love', 'Rosannadanna', 'Nog', 'Billy', 'Shimmy', 'Jon', 'Sparticus',
+     'Penelope', 'Mork', 'Mindy', 'Nelson', 'Dude', 'Tool', 'Darth', 'Biff', 'Toodles', 'Disguy', 'Mud',
+     'Tambourine', 'Lazarus', 'Domino', 'Arya']
+  end
+
+  def user_last_names
+    ['Anderson', 'Smith', 'Georgianity', 'Galapinopus', 'Danger', 'Gnarl', 'Egg', 'MacNinnypoop',
+     'Aladocious', 'Westerly', 'DarkDirk', 'Puffinstuff', 'Jones', 'Daring', 'Bond', 'TheGreek',
+     'Cocopop', 'Star', 'Skywalker', 'Snow', 'Blitzkreig', 'Pitstop', 'Stark', 'Trump', 'Moneybags']
+  end
 
   def role_types
     ['registered_user',
@@ -38,14 +64,24 @@ class Seed
   end
 
   def generate_users
-    25.times do |i|
-      user = User.find_or_create_by!(username: "Registered_user_#{i}", password_digest: 'password')
+    registered_role = Role.find_by(title: "registered_user")
+    business_role = Role.find_by(title: "business_admin")
+    platform_role = Role.find_by(title: "platform_admin")
+
+    15.times do |i|
+      user = User.create(username: user_first_names[i], password: 'password')
+      user.roles << registered_role
       puts "User: #{user.username} created!"
     end
 
-    5.times do |i|
-      platform_admin = User.find_or_create_by!(username: "platform_admin_#{i}", password_digest: 'password')
-      puts "User: #{platform_admin.username} created!"
+    3.times do |i|
+      name = user_first_names.sample
+      platform_admin_user = User.create(username: "Super#{user_first_names[i]}", password: 'password')
+      user_first_names.delete(name)
+      platform_admin_user.roles << registered_role
+      platform_admin_user.roles << business_role
+      platform_admin_user.roles << platform_role
+      puts "User: #{platform_admin_user.username} created!"
     end
 
   end
@@ -54,16 +90,19 @@ class Seed
     (1..7).to_a.sample
   end
 
-
   def generate_listings
+    business_role = Role.find_by(title: "business_admin")
+    registered_role = Role.find_by(title: "registered_user")
     25.times do |i|
-      business_admin = User.find_or_create_by!(username: "business_admin_#{i}", password_digest: 'password')
+      business_admin = User.create(username: user_first_names[i] + user_last_names.sample, password: 'password')
+      business_admin.roles << registered_role
+      business_admin.roles << business_role
       business_admin.update!(host_id: business_admin.id)
       puts "User: #{business_admin.username} created!"
 
-      listing = Listing.find_or_create_by!(location_id:          location_ids,
-                                cost:                 100.00,
-                                name:                 "name_#{i}",
+      Listing.find_or_create_by!(location_id:         location_ids,
+                                cost:                 listing_cost.sample,
+                                name:                 "#{listing_names_first.sample} #{listing_names_last.sample}",
                                 image_file_name:      "image_file_name_#{i}",
                                 image_content_type:   "image_content_type_#{i}",
                                 image_file_size:      i,
@@ -85,9 +124,7 @@ class Seed
                           end_date:     Date.today
                          )
     end
-
   end
-
 end
 
 Seed.start

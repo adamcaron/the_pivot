@@ -2,6 +2,18 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
+    @locations = Location.all
+  end
+
+  def create
+    @listing = Listing.new(listing_params)
+    if @listing.save
+      flash[:notice] = "Listing created!"
+      redirect_to dashboard_path
+    else
+      flash[:error] = "Invalid input - Please try creating listing again"
+      render '/listings/new.html.erb'
+    end
   end
 
   def show
@@ -17,17 +29,6 @@ class ListingsController < ApplicationController
     else
       @search_results = Listing.all.where location_id: params[:location]
       build_google_markers(@listings)
-    end
-  end
-
-  def create
-    @listing = Listing.new(listing_params)
-    if @listing.save
-      flash[:notice] = "Listing created!"
-      redirect_to listings_path
-    else
-      flash[:error] = "Invalid input - Please try creating listing again"
-      render '/admin/listings/new.html.erb'
     end
   end
 

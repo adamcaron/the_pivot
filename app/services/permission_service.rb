@@ -31,7 +31,7 @@ class PermissionService
   end
 
   def registered_user_permissions
-    return true if controller == 'users' && action == 'show'
+    return true if controller == 'users' && action.in?(%w(show edit update))
     return true if controller == 'listings' && action.in?(%w(new create))
     return true if controller == 'reservations' && action.in?(%w(index show create))
     guest_user_permissions
