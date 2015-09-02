@@ -32,11 +32,15 @@
           <th class="mdl-data-table__cell--non-numeric"><%= f.label :lat, "Latitude:" %></th>
           <th class="mdl-data-table__cell--non-numeric"><%= f.label :long, "Longitude:" %></th>
         </tr>
+
         <tr>
           <td class="mdl-data-table__cell--non-numeric"><%= f.number_field :lat %></td>
           <td class="mdl-data-table__cell--non-numeric"><%= f.number_field :long %></td>
         </tr>
 
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric"><%= f.hidden_field :host_id, :value => current_user.id %></td>
+        </tr>
 
         <tr>
           <td class="mdl-data-table__cell--non-numeric"></td>
