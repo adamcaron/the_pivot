@@ -90,9 +90,6 @@ class Seed
     (1..7).to_a.sample
   end
 
-  listing_name = "#{listing_names_first.sample} #{listing_names_last.sample}"
-  listing_image = "#{listing_name.split(' ').last}#{(1..7).sample}.jpg"
-
   def generate_listings
     business_role = Role.find_by(title: "business_admin")
     registered_role = Role.find_by(title: "registered_user")
@@ -102,14 +99,13 @@ class Seed
       business_admin.roles << business_role
       business_admin.update!(host_id: business_admin.id)
       puts "User: #{business_admin.username} created!"
+      listing_name = "#{listing_names_first.sample} #{listing_names_last.sample}"
+      listing_image = "#{listing_name.split(' ').last}-#{rand(1..2)}.jpg"
 
       Listing.find_or_create_by!(location_id:         location_ids,
                                 cost:                 listing_cost.sample,
-                                name:                 "#{listing_names_first.sample} #{listing_names_last.sample}",
-                                image_file_name:      "image_file_name_#{i}",
-                                image_content_type:   "image_content_type_#{i}",
-                                image_file_size:      i,
-                                image_updated_at:     Date.today,
+                                name:                 listing_name,
+                                image:                File.open('app/assets/images/')
                                 gmaps:                [true, false].sample,
                                 lat:                  i,
                                 long:                 i,
