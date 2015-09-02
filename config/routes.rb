@@ -12,7 +12,10 @@ Rails.application.routes.draw do
 
   resources :listings
   resources :locations,     only: [:index, :show]
-  resources :users,         only: [:new,   :create, :edit,   :update]
+
+  resources :users do
+    resources :listings,    only: [:index], controller: "user_listings"
+  end
 
   get     '/dashboard',         to: 'users#show'
 
