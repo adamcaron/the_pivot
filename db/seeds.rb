@@ -28,8 +28,8 @@ class Seed
   end
 
   def listing_names_last
-    ['Tent', 'Cabana', 'Hut', 'Igloo', 'Cottage', 'Barn', 'Hole', 'Hideout', 'Compound', 'Barracks',
-     'Oasis', 'House boat', 'Hovercraft', 'Cave', 'Grotto', 'Garden', 'Room', 'Guest House', 'Missile Silo']
+    ['Tent', 'Cabana', 'Hut', 'Igloo', 'Cottage', 'Barn', 'Hole', 'Hideout', 'Compound',
+     'Oasis', 'Houseboat', 'Cabin', 'Cave', 'Grotto', 'Chateau', 'Missile-Silo']
   end
 
   def user_first_names
@@ -89,6 +89,9 @@ class Seed
   def location_ids
     (1..7).to_a.sample
   end
+
+  listing_name = "#{listing_names_first.sample} #{listing_names_last.sample}"
+  listing_image = "#{listing_name.split(' ').last}#{(1..7).sample}.jpg"
 
   def generate_listings
     business_role = Role.find_by(title: "business_admin")
