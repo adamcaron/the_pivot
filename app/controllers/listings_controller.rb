@@ -2,6 +2,18 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
+    @locations = Location.all
+  end
+
+  def create
+    @listing = Listing.new(listing_params)
+    if @listing.save
+      flash[:notice] = "Listing created!"
+      redirect_to dashboard_path
+    else
+      flash[:error] = "Invalid input - Please try creating listing again"
+      render '/listings/new.html.erb'
+    end
   end
 
   def show
@@ -26,5 +38,11 @@ class ListingsController < ApplicationController
       marker.lng listing.long
       marker.infowindow "<a id='map-links' href='#{listing_url(listing)}'>#{listing.name}</a>"
     end
+  end
+
+  private
+
+  def listing_params
+    params.require(:listing).permit(:name, :location_id, :cost)
   end
 end
