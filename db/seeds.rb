@@ -86,7 +86,7 @@ class Seed
 
   end
 
-  def location_ids
+  def random_location_id
     (1..7).to_a.sample
   end
 
@@ -100,14 +100,14 @@ class Seed
       business_admin.update!(host_id: business_admin.id)
       puts "User: #{business_admin.username} created!"
 
-      Listing.find_or_create_by!(location_id:         location_ids,
+      Listing.find_or_create_by!(location_id:         random_location_id,
                                 cost:                 listing_cost.sample,
                                 name:                 "#{listing_names_first.sample} #{listing_names_last.sample}",
                                 image_file_name:      "image_file_name_#{i}",
                                 image_content_type:   "image_content_type_#{i}",
                                 image_file_size:      i,
                                 image_updated_at:     Date.today,
-                                gmaps:                [true, false].sample,
+                                gmaps:                true,
                                 lat:                  i,
                                 long:                 i,
                                 host_id:              business_admin.id)
