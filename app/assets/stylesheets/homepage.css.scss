@@ -42,11 +42,6 @@
   font-weight: 200;
 }
 
-#nav-bar .mdl-layout__header-row {
-  margin-bottom: 10px;
-}
-
-
 #nav-bar .mdl-layout__header-row .mdl-navigation__link {
   padding: 0;
 }
@@ -59,7 +54,7 @@ nav#main-links {
 #nav-bar {
   position:absolute;
   background-color: rgba(0,0,0,.4);
-  padding-top: 10px;
+  padding: 10px 0 10px 0;
   -moz-box-shadow:    inset 0px 5px 20px 0px rgba(0,0,0,0.3);
   -webkit-box-shadow: inset 0px 5px 20px 0px rgba(0,0,0,0.3);
   box-shadow:         inset 0px 5px 20px 0px rgba(0,0,0,0.3);
@@ -98,7 +93,7 @@ nav#main-links {
     color: white;
 }
 
-.nav-bar-link:hover {
+.navbar-link:hover {
   background-color: rgba(0,0,0,.4);
   text-decoration: none;
 }
