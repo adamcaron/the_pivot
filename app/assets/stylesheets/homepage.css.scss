@@ -32,13 +32,10 @@
 
 #logo {
   text-decoration: none;
-  margin-left: 0px ;
 }
 
 #nav-bar h1 {
-  left: 38%;
   margin: 0;
-  position: absolute;
   letter-spacing: 0.02em;
   font-family: 'Yellowtail', cursive;
   font-size: 48px;
@@ -47,6 +44,16 @@
 
 #nav-bar .mdl-layout__header-row {
   margin-bottom: 10px;
+}
+
+
+#nav-bar .mdl-layout__header-row .mdl-navigation__link {
+  padding: 0;
+}
+
+nav#main-links {
+  right: 0;
+  position: absolute;
 }
 
 #nav-bar {
@@ -77,26 +84,17 @@
 }
 
 .username-link, .username-link:visited, .username-link:link {
-    color: white;
-    font-size: 1.45em;
-    text-decoration: none;
-    height: 75px;
-    display: block;
-    padding: 9px 13px 0 13px;
+  // margin-left: 15px;
+  // border-left: 2px solid rgba(0, 0, 0, .4);
+  // border-right: 2px solid rgba(0, 0, 0, .4);
+  // color: white;
+  // font-size: 1.1em;
+  // text-decoration: none;
+  // height: 75px;
+  // display: block;
+  // padding: 9px 13px 0 13px;
 }
 
 .username-link:hover {
   background-color: rgba(0,0,0,.4);
-}
-
-#nav-bar .mdl-layout__header-row .mdl-navigation__link {
-  padding: 0;
-}
-
-#cart-count.mdl-badge[data-badge]::after {
-    font-family: 'Sans-Serif';
-    background: green;
-    box-shadow: white 1px 1px 1px;
-    top: 13px;
-    right: 0px;
 }

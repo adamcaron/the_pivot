@@ -1,30 +1,29 @@
 <header id="nav-bar" class="mdl-layout__header mdl-layout__header--transparent">
-  <div class="mdl-layout__header-row">
-    <!-- Title -->
-    <nav class="mdl-navigation">
 
+  <div class="mdl-layout__header-row">
+
+    <h1><%= link_to "Way Out There", root_path, id: "logo" %></h1>
+
+    <nav class="mdl-navigation" id="main-links">
       <% if current_user %>
-          <span class="mdl-navigation__link"><%= link_to current_user.username, dashboard_path, class: "username-link" %></span>
-          <span class="mdl-navigation__link"><%= link_to "Logout", logout_path, method: :delete, class: "nav-bar-link" %></span>
+        <span class="mdl-navigation__link"><%= link_to "Host Your Space", new_listing_path, class: "nav-bar-link" %></span>
+        <span class="mdl-navigation__link"><%= link_to current_user.username, dashboard_path, class: "nav-bar-link username-link" %></span>
+        <span class="mdl-navigation__link"><%= link_to "Logout", logout_path, method: :delete, class: "nav-bar-link" %></span>
       <% else %>
-          <span class="mdl-navigation__link"><%= link_to "Login", login_path, class: "nav-bar-link" %></span>
-          <span class="mdl-navigation__link"><%= link_to "Register", new_user_path, class: "nav-bar-link" %></span>
+        <span class="mdl-navigation__link"><%= link_to "Register", new_user_path, class: "nav-bar-link" %></span>
+        <span class="mdl-navigation__link"><%= link_to "Login", login_path, class: "nav-bar-link" %></span>
       <% end %>
     </nav>
-    <h1><%= link_to "Way Out There", root_path, id: "logo" %></h1>
+
     <!-- Add spacer, to align navigation to the right -->
-    <div class="mdl-layout-spacer"></div>
-    <!-- Navigation -->
-    <nav class="mdl-navigation">
-    <% if current_user %>
-      <span class="mdl-navigation__link"><%= link_to "Host Your Space", new_listing_path, class: "nav-bar-link" %></span>
-    <% end %>
-    <span id="cart-count" class="material-icons mdl-badge mdl-navigation__link"<% if @cart.contents.any? %>data-badge="<%= 1 %>"><% end %><span class="mdl-navigation__link"><%= link_to "Cart", cart_path, class: "nav-bar-link" %></span></span>
-    </nav>
+    <!-- <div class="mdl-layout-spacer"></div> -->
+
   </div>
+
   <div class="flash">
     <% flash.each do |type, msg| %>
-        <%= content_tag  :div, msg, class: "flash_#{type}"%>
+      <%= content_tag  :div, msg, class: "flash_#{type}"%>
     <% end %>
   </div>
+
 </header>
