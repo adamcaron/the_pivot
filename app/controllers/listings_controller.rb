@@ -8,6 +8,7 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
     if @listing.save
+      current_user.roles.first.update!(title: "business_admin")
       flash[:notice] = "Listing created!"
       redirect_to dashboard_path
     else
