@@ -1,5 +1,5 @@
 <article>
-  <%= form_for([:admin, @listing], html: { multipart: true }) do |f| %>
+  <%= form_for([@listing], html: { multipart: true }) do |f| %>
       <table id = "whole-card" class="mdl-data-table mdl-js-data-table edit-listing-table">
         <thead>
         <tr>
@@ -17,6 +17,15 @@
           <td class="mdl-data-table__cell--non-numeric"><%#= f.text_field :description %></td>
         </tr>
         <tr>
+        </tr>
+
+        <tr>
+          <th class="mdl-data-table__cell--non-numeric"><%= f.label :cost, "Cost:" %></th>
+          <th class="mdl-data-table__cell--non-numeric"><%= f.label :location_id, "Location:" %></th>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric"><%= f.number_field :cost %></td>
+          <td class="mdl-data-table__cell--non-numeric"><%= f.number_field :location_id %></td>
         </tr>
 
         <tr>
