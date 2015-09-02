@@ -1,7 +1,8 @@
-class Admin::ListingsController < Admin::BaseController
+class Users::ListingsController < Users::BaseController
 
   def index
-    @listings = Listing.all
+    require "pry"; binding.pry
+    @listings = Listing.find_all(host_id: current_user.id)
   end
 
   def new
