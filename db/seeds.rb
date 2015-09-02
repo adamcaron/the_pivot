@@ -111,8 +111,11 @@ class Seed
       business_admin.roles << business_role
       business_admin.update!(host_id: business_admin.id)
       puts "User: #{business_admin.username} created!"
+      location  = random_location_id
+      continent = Location.find(location).continent
+      lat_long  = lats_longs[continent].sample
 
-      Listing.find_or_create_by!(location_id:         random_location_id,
+      Listing.find_or_create_by!(location_id:         location,
                                 cost:                 listing_cost.sample,
                                 name:                 "#{listing_names_first.sample} #{listing_names_last.sample}",
                                 image_file_name:      "image_file_name_#{i}",
@@ -120,8 +123,8 @@ class Seed
                                 image_file_size:      i,
                                 image_updated_at:     Date.today,
                                 gmaps:                true,
-                                lat:                  i,
-                                long:                 i,
+                                lat:                  lat_long[0],
+                                long:                 lat_long[1],
                                 host_id:              business_admin.id)
       puts "Listing: Listing with host #{business_admin.id} created!"
     end
