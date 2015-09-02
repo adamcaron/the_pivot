@@ -11,6 +11,7 @@
         <th class="mdl-data-table__cell--non-numeric"><%= f.label :cost, "Cost:" %></th>
       </tr>
     </thead>
+
     <tbody>
       <tr>
         <td class="mdl-data-table__cell--non-numeric"><%= f.text_field :name %></td>
@@ -21,17 +22,9 @@
         <td class="mdl-data-table__cell--non-numeric">
           <%= f.select(:location_id, Location.all.map{ |l| ["#{l.continent}", l.id ] }) %>
         </td>
-        <td class="mdl-data-table__cell--non-numeric"></td>
       </tr>
 
-      <tr>
-        <th class="mdl-data-table__cell--non-numeric"><%= f.label :cost, "Cost:" %></th>
-      </tr>
-      <tr>
-        <td class="mdl-data-table__cell--non-numeric"><%= f.number_field :cost %></td>
-      </tr>
-
-      <tr>
+      tr>
         <th class="mdl-data-table__cell--non-numeric"><%= f.label :lat, "Latitude:" %></th>
         <th class="mdl-data-table__cell--non-numeric"><%= f.label :long, "Longitude:" %></th>
       </tr>
