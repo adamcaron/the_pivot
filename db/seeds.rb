@@ -117,7 +117,7 @@ class Seed
       listing_name = "#{listing_names_first.sample} #{listing_names_last.sample}"
       listing_image = "#{listing_name.split(' ').last}-#{rand(1..2)}.jpg"
 
-      Listing.find_or_create_by!(location_id:         location,
+      Listing.create(location_id:         location,
                                 cost:                 listing_cost.sample,
                                 name:                 listing_name,
                                 image:                File.open("app/assets/images/#{listing_image}"),
