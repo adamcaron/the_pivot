@@ -13,11 +13,6 @@ class ApplicationController < ActionController::Base
   end
   helper_method :cart_listing
 
-  def admin_listings
-    Listing.where(host_id: current_user.id)
-  end
-  helper_method :user_listings
-
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
