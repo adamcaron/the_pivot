@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
   helper_method :cart_listing
 
-  def user_listings
+  def admin_listings
     Listing.where(host_id: current_user.id)
   end
   helper_method :user_listings
