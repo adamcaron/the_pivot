@@ -21,8 +21,7 @@ class UsersController < ApplicationController
     if current_user == nil
       redirect_to '/404'
     else
-      @user = User.find(current_user.id)
-
+      @listings = Listing.where(host_id: current_user.id)
     end
   end
 
