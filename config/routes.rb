@@ -8,11 +8,10 @@ Rails.application.routes.draw do
   delete  '/cart',            to: 'carts#destroy'
 
   resources :listings
-  resources :locations,     only: [:index, :show]
+  resources :locations,       only: [:index, :show]
   resources :users
 
-  get     'search_results',  to: 'listings#search_results'
-
+  get     '/search_results',  to: 'listings#search_results'
   get     '/dashboard',       to: 'users#show'
 
   get     '/login',           to: "sessions#new"
