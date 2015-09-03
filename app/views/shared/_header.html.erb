@@ -7,7 +7,7 @@
       <% if current_user %>
         <span class="mdl-navigation__link"><%= link_to current_user.username, dashboard_path, class: "navbar-link username-link" %></span>
         <span class="mdl-navigation__link"><%= link_to "Logout", logout_path, method: :delete, class: "navbar-link" %></span>
-        <span class=""><%= link_to "Host Your Space", new_listing_path, class: "host-link" %></span>
+        <span class="mdl-navigation__link"><%= link_to "Host Your Space", new_listing_path, class: "navbar-link host-link" %></span>
       <% else %>
         <span class="mdl-navigation__link"><%= link_to "Register", new_user_path, class: "navbar-link" %></span>
         <span class="mdl-navigation__link"><%= link_to "Login", login_path, class: "navbar-link" %></span>
