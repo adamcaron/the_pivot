@@ -3,7 +3,7 @@
   <table id = "whole-card" class="mdl-data-table mdl-js-data-table edit-listing-table">
     <thead>
       <tr>
-        <th id="table-title" class="mdl-data-table__cell--non-numeric"><%= @title %>Listing</th>
+        <th id="table-title" class="mdl-data-table__cell--non-numeric"><%= @title %>Edit Listing</th>
         <th id="table-title" class="mdl-data-table__cell--non-numeric"></th>
       </tr>
 
@@ -20,12 +20,12 @@
     <tbody>
       <tr>
         <th class="mdl-data-table__cell--non-numeric"><%= f.label :cost, "Cost:" %></th>
-        <th class="mdl-data-table__cell--non-numeric"><%= f.label :image_file_name, "Image:" %></th>
+        <th class="mdl-data-table__cell--non-numeric"><%= f.label :image, "Image:" %></th>
       </tr>
 
       <tr>
         <td class="mdl-data-table__cell--non-numeric"><%= f.text_field :cost %></td>
-        <td class="mdl-data-table__cell--non-numeric"><%= f.number_field :image_file_name %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= f.file_field :image %></td>
       </tr>
 
       <tr>
