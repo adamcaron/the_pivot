@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       @user.roles << Role.find_by(title: "registered_user")
       flash[:notice] = "Welcome back #{@user.username}!"
-      redirect_to root_path
+      redirect_to cart_path
     else
       flash[:error] = "Invalid input - Please try creating user again"
       render :new

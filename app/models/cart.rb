@@ -12,8 +12,4 @@ class Cart
   def remove_listing(listing_id)
     @contents[listing_id.to_s] = 0
   end
-
-  def reset
-    contents.clear
-  end
 end
