@@ -33,4 +33,5 @@ group :development, :test do
   gem 'better_errors'
   gem 'web-console', '~> 2.0'
   gem 'simplecov'
+  gem 'capybara-webkit', '~> 1.7.0'
 end
