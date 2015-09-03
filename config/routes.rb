@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :listings
   resources :locations,     only: [:index, :show]
 
-  get     'search_results',  to: 'listings#search'
+  get     'search_results',  to: 'listings#search_results'
 
   get     '/dashboard',       to: 'users#show'
 
