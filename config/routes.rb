@@ -2,9 +2,6 @@ Rails.application.routes.draw do
   root "welcome#index"
 
   resources :reservations,  only: [:new, :create, :index,  :show]
-  namespace :admin do
-    resources :users, :listings, :reservations
-  end
 
   post    '/cart',            to: 'carts#create'
   get     '/cart',            to: 'carts#show'
@@ -13,11 +10,7 @@ Rails.application.routes.draw do
   resources :listings
   resources :locations,     only: [:index, :show]
 
-  resources :users do
-    resources :listings,    only: [:index], controller: "user_listings"
-  end
-
-  get     '/dashboard',         to: 'users#show'
+  get     '/dashboard',       to: 'users#show'
 
   get     '/login',           to: "sessions#new"
   post    '/login',           to: "sessions#create"
