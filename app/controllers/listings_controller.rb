@@ -8,7 +8,8 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
     if @listing.save
-      current_user.roles.first.update!(title: "business_admin", host_id: current_user.id)
+      current_user.roles.first.update!(title: "business_admin")
+      current_user.update!(host_id: current_user.id)
       flash[:notice] = "Listing created!"
       redirect_to dashboard_path
     else
@@ -23,7 +24,6 @@ class ListingsController < ApplicationController
   end
 
   def index
-
   end
 
   def search_results
