@@ -162,8 +162,13 @@ a:hover {
   font-family: 'Open Sans', sans-serif;
 }
 
-#footer {
+footer {
   background:#000;
+  margin-top: 100px;
+}
+
+.container {
+  padding-left: 20px;
 }
 
 #username-link a, #username-link a:link, #username-link a:visited {
