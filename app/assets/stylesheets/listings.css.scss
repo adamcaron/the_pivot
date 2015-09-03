@@ -1,10 +1,6 @@
-#map{
-  border-radius: 5px 5px 5px 5px;
-  border: solid 2px #363636;
-}
-
 #map-links{
   color: black;
+  border-radius: 5px 5px 5px 5px;
 }
 
 .homepage-map {
@@ -15,12 +11,9 @@
 
 .listing-page-map {
   height: 400px;
-  border-radius: 5px 5px 5px 5px;
-  border: solid 2px #363636;
 }
 
 .listings-header {
-  font-family: 'Open Sans';
   font-weight: bold;
   background: rgba(255, 255, 255, 0.5);
   border-radius: 5px 5px 5px 5px;
@@ -29,58 +22,33 @@
   padding-left: 10px;
 }
 
-.listing-subheader {
-  margin-top: 0;
-}
-
-.listing-header-img {
-  height: 600px;
-  overflow: hidden;
-  position: relative;
-}
-
 #listing-description {
-  font-family: "Open Sans";
   font-size: 20px;
 
 }
 
 .listing-img {
-  height: 550px;
+  margin-bottom:25px;
+  border-radius: 5px 5px 5px 5px;
+  height: 270px;
   overflow: hidden;
   position: relative;
-  border: solid 3px #363636;
-  border-radius: 5px 5px 5px 5px;
-  margin: 15px 15px 15px 15px;
-  box-shadow: 0px 30px 40px ;
-  -moz-box-shadow:    0px 0px 40px 15px rgba(0, 0, 0, 0.6);
-  -webkit-box-shadow: 0px 0px 40px 15px rgba(0, 0, 0, 0.6);
-  box-shadow:         0px 0px 40px 15px rgba(0, 0, 0, 0.6);
-}
-
-.listing-show-card {
-  height: 550px;
-  width: 1100px;
-}
-
-.listing-header-img img {
-  width: 100%;
-  top: -300px;
-  position: absolute;
+  vertical-align: middle
+  // border: solid 3px #363636;
+  // border-radius: 5px 5px 5px 5px;
+  // margin: 15px 15px 15px 15px;
+  // box-shadow: 0px 30px 40px ;
+  // -moz-box-shadow:    0px 0px 40px 15px rgba(0, 0, 0, 0.6);
+  // -webkit-box-shadow: 0px 0px 40px 15px rgba(0, 0, 0, 0.6);
+  // box-shadow:         0px 0px 40px 15px rgba(0, 0, 0, 0.6);
 }
 
 .description {
-  padding: 15px;
-  background: rgba(255, 255, 255, .5);
-  border: solid 3px #363636;
-  border-radius: 5px 5px 5px 5px;
-}
-
-.extras {
-  padding: 15px;
-  background: rgba(255, 255, 255, .5);
-  border-radius: 5px 5px 5px 5px;
-  border: solid 3px #363636;
+  // padding: 15px;
+  // background: rgba(255, 255, 255, .5);
+  // border: solid 3px #363636;
+  // border-radius: 5px 5px 5px 5px;
+  // border-radius: 5px 5px 5px 5px;
 }
 
 .call-to-action, .call-to-action:visited, .call-to-action:link {
@@ -88,73 +56,19 @@
   font-size: 1.3em;
   color: white;
   background-color: #544e9c;
-  padding: 30px 0 30px 0px;
+  padding: 26px 0 26px 0px;
   text-decoration: none;
   border: solid 1px #363636;
   border-radius: 5px 5px 5px 5px;
   text-align: center;
+  float: right;
+  width: 66%;
 }
 
 .call-to-action:hover {
   -moz-box-shadow:    0px 2px 15px 0px rgba(0, 0, 0, 0.4);
   -webkit-box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.4);
   box-shadow:         0px 2px 15px 0px rgba(0, 0, 0, 0.4);
-}
-
-#extra-table {
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 5px 5px 5px 5px;
-}
-
-.extras tbody {
-  height: 150px;
-  color: black;
-}
-
-.extras td a{
-  color: black;
-}
-
-#extras-heading{
-  text-align: left;
-  font-family: "Open Sans";
-  font-size: 18px;
-  font-weight: bold;
-  color: black;
-}
-
-#listings-card{
-  height: 176px;
-  color: white;
-  text-shadow:
-  0.1em  .1em .1em black,
-  .05em -.05em .05em black,
-  -.01em  .01em .01em black,
-  -.01em -.01em .01em black;
-}
-
-#admin-whole-card{
-  height: 120px;
-  width:200px;
-}
-
-#admin-whole-card h3{
-  font-size: 12px;
-}
-
-.listing-index-card {
-  height: 200px;
-  width: 400px;
-}
-
-.admin-listing-index-card {
-  height: 100px;
-  width:200px;
-}
-
-#whole-card{
-  border: solid 1px #363636;
-  border-radius: 5px 5px 5px 5px;
 }
 
 .edit-listing-table {

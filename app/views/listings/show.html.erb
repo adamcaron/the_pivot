@@ -3,30 +3,15 @@
 <script src="map.js" type="text/javascript"></script>
 
 <article>
-  <h1>Listing Info:</h2>
-  <h2 id="title"><%= @listing.name %></h1>
 
-  <div class = "listing-img">
-    <%# currently this exists as a single image. normally on airbnb listings there are multiple images. for our current situation it may make sense to keep it as a
-    # single image. in the future we may want to expand it into multiple images per listing, which means this column would be an array type or images would
-    # get its own table in the database with a reference to listing_id %>
-
-    <%= image_tag @listing.image, class: "listing-show-card" %>
-  </div>
+  <h1 id="title"><%= @listing.name %></h1>
 
   <div class="mdl-grid">
-    <div class="description mdl-cell mdl-cell--7-col">
 
-      <h3 class="listing-subheader"><%= number_to_currency(@listing.cost) %></h3>
-      <ul>
-        <li>Location: <%= Location.find(@listing.location_id).continent %></li>
-      </ul>
-      <%= link_to "Book Listing", cart_path(listing_id: @listing.id), method: :post, class: "call-to-action" %>
-    </div>
+    <div class="mdl-cell mdl-cell--5-col">
+      <div class = "listing-img"><%= image_tag @listing.image %></div>
 
-    <div class="extras mdl-cell mdl-cell--5-col">
       <div id="map" class="listing-page-map">
-
       </div>
 
       <script type="text/javascript">
@@ -39,5 +24,25 @@
         });
       </script>
     </div>
+
+    <div class="mdl-cell mdl-cell--7-col">
+      <p>
+        All new! Beautiful, completely renovated / equipped. Plenty of sunshine all year round, from sunrise to sunset! A cosy and comfortable place!
+      </p>
+      <p>
+        <%= number_to_currency(@listing.cost) %> in <%= Location.find(@listing.location_id).continent %>
+      </p>
+
+      <%= link_to "Book Listing", cart_path(listing_id: @listing.id), method: :post, class: "call-to-action" %>
+    </div>
+
   </div>
 </article>
+
+
+
+
+
+
+
+
