@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Location, type: :model do
-  let(:location) { Location.new(continent: "Africa", description: "Over there") }
+  let(:location) { Location.new(continent: "Africa") }
 
   it 'is valid' do
     expect(location).to be_valid
@@ -10,14 +10,5 @@ RSpec.describe Location, type: :model do
   it 'is invalid without a continent' do
     location.continent = nil
     expect(location).to_not be_valid
-  end
-
-  it 'is invalid without a description' do
-    location.description = nil
-    expect(location).to_not be_valid
-  end
-
-  it 'has an array of trips' do
-    expect(location.trips).to eq([])
   end
 end
