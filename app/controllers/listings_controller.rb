@@ -8,7 +8,7 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
     if @listing.save
-      current_user.roles.first.update!(title: "business_admin")
+      current_user.roles.first.update!(title: "business_admin", host_id: current_user.id)
       flash[:notice] = "Listing created!"
       redirect_to dashboard_path
     else
@@ -23,6 +23,10 @@ class ListingsController < ApplicationController
   end
 
   def index
+
+  end
+
+  def search
     session[:dates] = { to: params[:to], from: params[:from] }
     if !cart_listing.valid?
       flash[:invalid_search] = "Invalid search. Please try again"
@@ -33,12 +37,29 @@ class ListingsController < ApplicationController
     end
   end
 
-  def build_google_markers(data)
-    @hash = Gmaps4rails.build_markers(data) do |listing, marker|
-      marker.lat listing.lat
-      marker.lng listing.long
-      marker.infowindow "<a id='map-links' href='#{listing_url(listing)}'>#{listing.name}</a>"
+  def edit
+    @listing = Listing.find(params[:id])
+  end
+
+  def update
+    @listing = Listing.find(params[:id])
+    @listing.update!(listing_params)
+    if @listing.save
+      current_user.update!(host_id: current_user.id)
+      flash[:notice] = "Listing updated!"
+      redirect_to dashboard_path
+    else
+      flash[:error] = "Listing not updated - Please try updating listing again"
+      render '/listings/edit.html.erb'
     end
+  end
+
+  def build_google_markers(data)
+    #@hash = Gmaps4rails.build_markers(data) do |listing, marker|
+      #marker.lat listing.lat
+      #marker.lng listing.long
+      #marker.infowindow "<a id='map-links' href='#{listing_url(listing)}'>#{listing.name}</a>"
+    #end
   end
 
   private
