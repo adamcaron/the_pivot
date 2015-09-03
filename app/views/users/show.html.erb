@@ -32,8 +32,8 @@
             <h3 class="mdl-card__title-text">Manage My Listings</h3>
           </div>
           <div class="mdl-card__actions mdl-card--border">
-            <% admin_listings.each do |listing| %>
-              <%= listing.name %><%= link_to 'Edit', edit_admin_listing_path(listing), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %><br>
+            <% @listings.each do |listing| %>
+              <%= listing.name %><%= link_to 'Edit', edit_listing_path(listing), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %><br>
             <% end %>
           </div>
         </div>
