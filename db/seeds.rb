@@ -115,7 +115,7 @@ class Seed
       continent     = Location.find(location).continent
       lat_long      = lats_longs[continent].sample
       listing_name  = "#{listing_names_first.sample} #{listing_names_last.sample}"
-      listing_image = "#{listing_name.split(' ').last}-#{rand(1..2)}.jpg"
+      listing_image = "#{listing_name.split(' ').last}-#{rand(3..4)}.jpg"
 
       Listing.create(location_id: location,
                      cost:        listing_cost.sample,
