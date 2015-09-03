@@ -32,4 +32,5 @@ group :development, :test do
   gem 'awesome_print'
   gem 'better_errors'
   gem 'web-console', '~> 2.0'
+  gem 'simplecov'
 end
