@@ -120,7 +120,7 @@ class Seed
       Listing.create(location_id: location,
                      cost:        listing_cost.sample,
                      name:        listing_name,
-                     image:       File.open("app/assets/images/#{listing_image}"),
+                     image:       File.open("app/assets/images/#{listing_image.capitalize}"),
                      gmaps:       true,
                      lat:         lat_long[0],
                      long:        lat_long[1],
