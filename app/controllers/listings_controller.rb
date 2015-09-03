@@ -8,6 +8,8 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
     if @listing.save
+      current_user.roles.first.update!(title: "business_admin")
+      current_user.update!(host_id: current_user.id)
       flash[:notice] = "Listing created!"
       redirect_to dashboard_path
     else
@@ -22,12 +24,32 @@ class ListingsController < ApplicationController
   end
 
   def index
+  end
+
+  def search_results
     session[:dates] = { to: params[:to], from: params[:from] }
     if !cart_listing.valid?
       flash[:invalid_search] = "Invalid search. Please try again"
       redirect_to root_path
     else
       @search_results = Listing.all.where location_id: params[:location]
+    end
+  end
+
+  def edit
+    @listing = Listing.find(params[:id])
+  end
+
+  def update
+    @listing = Listing.find(params[:id])
+    @listing.update!(listing_params)
+    if @listing.save
+      current_user.update!(host_id: current_user.id)
+      flash[:notice] = "Listing updated!"
+      redirect_to dashboard_path
+    else
+      flash[:error] = "Listing not updated - Please try updating listing again"
+      render '/listings/edit.html.erb'
     end
   end
 
@@ -42,6 +64,6 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:name, :location_id, :cost, :image)
+    params.require(:listing).permit(:name, :description, :cost, :location_id, :image, :gmaps, :host_id, :lat, :long)
   end
 end

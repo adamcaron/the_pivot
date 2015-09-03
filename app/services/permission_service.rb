@@ -25,7 +25,7 @@ class PermissionService
   end
 
   def business_admin_permissions
-    return true if controller == 'listings' && action.in?(%w(edit destroy))
+    return true if controller == 'listings' && action.in?(%w(edit destroy update))
     return true if controller == 'users' && action.in?(%w(edit destroy))
     registered_user_permissions
   end
@@ -41,7 +41,7 @@ class PermissionService
     return true if controller == 'welcome' && action == 'index'
     return true if controller == 'carts' && action.in?(%w(show create))
     return true if controller == 'users' && action.in?(%w(new create))
-    return true if controller == 'listings' && action.in?(%w(show index))
+    return true if controller == 'listings' && action.in?(%w(show search_results))
     return true if controller == 'sessions' && action.in?(%w(new create destroy))
   end
 end

@@ -3,9 +3,10 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true,
             uniqueness: true
-  has_many :reservations
-  has_many :user_roles
-  has_many :roles, through: :user_roles
+
+  has_many  :reservations
+  has_many  :user_roles
+  has_many  :roles, through: :user_roles
 
   def platform_admin?
     roles.exists?(title: "platform_admin")
