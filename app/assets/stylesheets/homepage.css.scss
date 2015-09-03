@@ -10,43 +10,49 @@
   position: absolute;
 }
 
-input[type="text"], input[type="password"], input[type="number"] {
-  padding: .6em .25em;
-}
-
-input[type="submit"] {
-  border : solid 0px #ffffff;
-  border-radius : 3px;
-  moz-border-radius : 3px;
-  -webkit-box-shadow : 0px 0px 5px rgba(0,0,0,0.4);
-  -moz-box-shadow : 0px 0px 5px rgba(0,0,0,0.4);
-  box-shadow : 0px 0px 5px rgba(0,0,0,0.4);
-  font-size : 1em;
-  color : #ffffff;
-  padding : .5em 2em;
-  background : #6c64db;
-  background : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6c64db), color-stop(0%,#5b54b8), color-stop(0%,#544e9c), color-stop(0%,#47428a), color-stop(100%,#544e9c));
-  background : -moz-linear-gradient(top, #6c64db 0%, #5b54b8 0%, #544e9c 0%, #47428a 0%, #544e9c 100%);
-  background : -webkit-linear-gradient(top, #6c64db 0%, #5b54b8 0%, #544e9c 0%, #47428a 0%, #544e9c 100%);
-  background : -o-linear-gradient(top, #6c64db 0%, #5b54b8 0%, #544e9c 0%, #47428a 0%, #544e9c 100%);
-  background : -ms-linear-gradient(top, #6c64db 0%, #5b54b8 0%, #544e9c 0%, #47428a 0%, #544e9c 100%);
-  background : linear-gradient(top, #6c64db 0%, #5b54b8 0%, #544e9c 0%, #47428a 0%, #544e9c 100%);
-  filter : progid:DXImageTransform.Microsoft.gradient( startColorstr='#6c64db', endColorstr='#544e9c',GradientType=0 );
-  margin-bottom: 12px;
-}
-
-select {
-  width: 160px;
+.search-area select {
+  color: rgb(86, 90, 92);
+  font-size: 16px;
+  height: 44px;
+  width: 220px;
   -webkit-appearance: none;
   padding: 5px 6px;
-  height: 2.7em;
   overflow: hidden;
-  background: url('dropdown.png') no-repeat right #FEFEFE;
+  background: url('') no-repeat right #FEFEFE; // dropdown.png
   border: #ccc 1px solid;
   -webkit-border-radius: 3px;
-  border-radius: 3px;
+  border-radius: 0px;
   -webkit-box-shadow: inset 0px 0px 10px 1px #FEFEFE;
   box-shadow: inset 0px 0px 10px 1px #FEFEFE;
+}
+
+.search-area input[type="text"] {
+  height: 40px;
+  font-size: 16px;
+  color: rgb(86, 90, 92);
+  padding: 0 .25em;
+}
+
+.search-area input[type="submit"] {
+  -webkit-appearance: none;
+  font-size: 16px;
+  height: 45px;
+  border-radius: 0px;
+  -moz-border-radius: 3px;
+  color: #ffffff;
+  padding : .5em 2em;
+  background-color: rgb(75,70,144);
+  -moz-border-radius: 0px;
+  -webkit-box-shadow: 0px 0px 0px rgba(0,0,0,0);
+  -moz-box-shadow: 0px 0px 0px rgba(0,0,0,0);
+}
+
+.search-area input[type="submit"]:hover {
+  background-color: rgb(88,83,163);
+}
+
+.search-area input[type="submit"]:active {
+  background-color: rgb(75,70,144);
 }
 
 .catchphrase {
