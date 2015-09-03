@@ -12,22 +12,22 @@ RSpec.describe Listing, type: :model do
       expect(listing.name).to eq("Machu Picchu")
     end
 
-    it 'has an listing cost' do
+    it 'has a cost' do
       expect(listing.cost).to eq(5000.00)
     end
 
     it "does not create a listing with name missing" do
-      Listing.create!(location_id: location.id, cost: 5000.00)
+      Listing.create(location_id: location.id, cost: 5000.00)
       expect(Listing.all.count).to eq(0)
     end
 
     it "does not create an listing with cost missing" do
-      Listing.create!(location_id: location.id, name: "Machu Picchu")
+      Listing.create(location_id: location.id, name: "Machu Picchu")
       expect(Listing.all.count).to eq(0)
     end
 
     it "does not create a listing with too long of a name" do
-      Listing.create!(location_id: location.id, cost: 5000.00, name: "Machu PicchuUUUUELIELIaseraweraweraewLILIELILIIE")
+      Listing.create(location_id: location.id, cost: 5000.00, name: "Machu PicchuUUUUELIELIaseraweraweraewLILIELILIIE")
       expect(Listing.all.count).to eq(0)
     end
   end
