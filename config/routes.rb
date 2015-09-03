@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :listings
   resources :locations,     only: [:index, :show]
+  resources :users
 
   get     'search_results',  to: 'listings#search_results'
 
