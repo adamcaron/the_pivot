@@ -38,7 +38,7 @@
   margin: 0;
   letter-spacing: 0.02em;
   font-family: 'Yellowtail', cursive;
-  font-size: 3em;
+  font-size: 2.3em;
   font-weight: 200;
 }
 
@@ -46,21 +46,30 @@
   padding: 0;
 }
 
+#header-row {
+  padding: 0 35px;
+}
+
 nav#main-links {
-  right: 0;
+  right: 35px;
   position: absolute;
+}
+
+#nav-bar .mdl-layout__header-row {
+  margin-bottom: 5px;
 }
 
 #nav-bar {
   position:absolute;
   background-color: rgba(0,0,0,.4);
-  padding: 10px 0 10px 0;
+  padding-top: 5px;
   -moz-box-shadow:    inset 0px 5px 20px 0px rgba(0,0,0,0.3);
   -webkit-box-shadow: inset 0px 5px 20px 0px rgba(0,0,0,0.3);
   box-shadow:         inset 0px 5px 20px 0px rgba(0,0,0,0.3);
 }
 
 .host-link {
+  margin-left: 15px;
   color: white;
   background-color: rgb(0, 122, 135);
   font-size: 1em;
@@ -79,23 +88,32 @@ nav#main-links {
   text-decoration: none;
 }
 
-.navbar-link {
-    color: white;
-    font-size: 1.1em;
-    text-decoration: none;
-    height: 75px;
-    display: block;
-    padding: 9px 12px 0 12px;
+.host-link:active {
+  background-color: rgb(0, 122, 135);
 }
 
-.navbar-link, .navbar-link:visited, .navbar-link:link,
-#logo, #logo:visited, #logo:link, .host-link, .host-link:visited, .host-link:link {
+.navbar-link {
+  margin-left: 8px;
+  color: white;
+  font-size: 1.1em;
+  text-decoration: none;
+  height: 20px;
+  padding: 4px 15px 4px 15px;
+}
+
+.navbar-link:visited, .navbar-link:link,
+#logo, #logo:visited, #logo:link, .host-link:visited, .host-link:link {
     color: white;
 }
 
 .navbar-link:hover {
   background-color: rgba(0,0,0,.4);
   text-decoration: none;
+  border-bottom-color: rgba(0, 0, 0, 0.3);
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
 }
 
 .username-link, .username-link:visited, .username-link:link {
