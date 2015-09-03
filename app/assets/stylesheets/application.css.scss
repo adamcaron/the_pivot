@@ -54,53 +54,82 @@ html, body, .form-background{
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-airplane:before {
-  content: "\e603";
-}
-.icon-parachute:before {
-  content: "\e602";
-}
-.icon-flight:before {
-  content: "\e1d1";
-}
-.icon-shopping-cart:before {
-  content: "\e604";
-}
-.icon-paw:before {
-  content: "\f1b0";
-}
-.icon-tree:before {
-  content: "\f1bb";
-}
-.icon-bicycle:before {
-  content: "\f206";
-}
-.icon-globe:before {
-  content: "\f0b6";
-}
-.icon-earth:before {
-  content: "\e600";
-}
-.icon-tree2:before {
-  content: "\e601";
+.card{
+  height: 176px;
+  color: white;
+  text-shadow:
+  0.1em  .1em .1em black,
+  .05em -.05em .05em black,
+  -.01em  .01em .01em black,
+  -.01em -.01em .01em black;
 }
 
+#admin-whole-card{
+  height: 120px;
+  width:200px;
+}
+
+#admin-whole-card h3{
+  font-size: 12px;
+}
+
+.listing-index-card {
+  height: 200px;
+  width: 400px;
+}
+
+.admin-listing-index-card {
+  height: 100px;
+  width:200px;
+}
+
+#whole-card{
+  border: solid 1px #363636;
+  border-radius: 5px 5px 5px 5px;
+}
+
+
+// .icon-airplane:before {
+//   content: "\e603";
+// }
+// .icon-parachute:before {
+//   content: "\e602";
+// }
+// .icon-flight:before {
+//   content: "\e1d1";
+// }
+// .icon-shopping-cart:before {
+//   content: "\e604";
+// }
+// .icon-paw:before {
+//   content: "\f1b0";
+// }
+// .icon-tree:before {
+//   content: "\f1bb";
+// }
+// .icon-bicycle:before {
+//   content: "\f206";
+// }
+// .icon-globe:before {
+//   content: "\f0b6";
+// }
+// .icon-earth:before {
+//   content: "\e600";
+// }
+// .icon-tree2:before {
+//   content: "\e601";
+// }
+
 article {
-  padding-top: 64px;
+  padding-top: 100px;
   margin: 0 100px 0 100px;
 }
 
 #title {
-  text-align: center;
+  color: #565a5c;
+  margin: 0 0;
+  margin-left: 16px;
   font-family: 'Open Sans', cursive;
-  font-weight: 300;
-  color: rgba(14, 9, 8, 0.75);
-  border: solid 3px #363636;
-  border-radius: 5px 5px 5px 5px;
-  background-color: rgba(247, 247, 247, 0.5);
-  padding: 5px;
-  margin: 50px 50px 10px 50px;
-
 }
 
 a, a:visited, a:link {
@@ -133,8 +162,13 @@ a:hover {
   font-family: 'Open Sans', sans-serif;
 }
 
-#footer {
+footer {
   background:#000;
+  margin-top: 100px;
+}
+
+.container {
+  padding-left: 20px;
 }
 
 #username-link a, #username-link a:link, #username-link a:visited {
