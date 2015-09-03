@@ -3,49 +3,56 @@ require 'rails_helper'
 feature 'User checks out' do
   before :each do
     create_locations
+    Listing.create!(name: 'testing hut', location_id: 5, cost: 99)
+  end
 
+  xscenario 'unregistered user' do #, :js => true do
     visit root_path
     page.select('Asia', from: 'location')
-    page.execute_script %Q{ $('#from').trigger("focus") } # activate datetime picker
-    page.execute_script %Q{ $("a.ui-state-default:contains('15')").trigger("click") } # click on day 15click_on 'Search'
-    page.execute_script %Q{ $('#to').trigger("focus") } # activate datetime picker
-    page.execute_script %Q{ $("a.ui-state-default:contains('16')").trigger("click") } # click on day 15click_on 'Search'
+    fill_in 'from', with: '09/28/2015'
+    fill_in 'to', with: '09/29/2015'
     click_button 'Search'
 
-    click_link 'Tiki Hut 2'
+    expect(current_path).to eq(search_results_path)
 
-    click_button 'Add to Cart'
-  end
+    first(:link, "View Listing").click
+    click_link 'Book Listing'
 
-  scenario 'unregistered user' do
+    save_and_open_page
+
     expect(current_path).to eq(cart_path)
-    click_button 'Checkout'
+
+    click_link 'Checkout'
+
     expect(current_path).to eq(login_path)
-
-    click_button 'Create Account'
-
-    expect(current_path).to eq(user_new_path)
-
     expect(page).to have_content('Register')
 
+    click_link 'Register'
     fill_in 'Username', with: "dave"
     fill_in 'Password', with: "password"
+    click_link_or_button 'Create User'
+    save_and_open_page
+    #expect(page).to have_content('dave')
 
-    click_button 'Create Account'
+    #visit cart_path
 
-    visit cart_path
+    #click_link 'Checkout'
 
-    click_button 'Checkout'
+    #fill_in 'Username', with: "dave"
+    #fill_in 'Password', with: "password"
+    #click_button 'Login'
 
-    expect(current_path).to eq(reservations_path)
-    expect(page).to have_content('Reservations')
+    #expect(current_path).to eq(cart_path)
+    #click_link 'Checkout'
 
-    user = User.find_by(username: 'dave')
+    #save_and_open_page
+    #expect(current_path).to eq(reservations_path)
+    #expect(page).to have_content('Reservations')
 
-    expect(user.orders.count).to eq(1)
+    #expect(user.orders.count).to eq(1)
   end
 
-  scenario 'registered user, not logged in' do
+  xscenario 'registered user, not logged in' do
     user = User.create(username: 'dave', password: 'password')
 
     expect(current_path).to eq(cart_path)
@@ -65,7 +72,7 @@ feature 'User checks out' do
     expect(page).to have_content('Reservations')
   end
 
-  scenario 'registered user, already logged in' do
+  xscenario 'registered user, already logged in' do
     user = User.create(username: 'dave', password: 'password')
     visit login_path
     fill_in 'Username', with: user.username

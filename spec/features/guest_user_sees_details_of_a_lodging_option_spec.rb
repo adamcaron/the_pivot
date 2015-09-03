@@ -6,7 +6,7 @@ feature 'Guest user sees details of a lodging option' do
     create_locations
 
 
-    visit root_path
+    xvisit root_path
     select('Asia', from: 'Location')
     page.execute_script %Q{ $('#from').trigger("focus") } # activate datetime picker
     page.execute_script %Q{ $("a.ui-state-default:contains('15')").trigger("click") } # click on day 15click_on 'Search'
@@ -17,7 +17,7 @@ feature 'Guest user sees details of a lodging option' do
     click_link 'Tiki Hut 2'
   end
 
-  scenario 'on listing show, not logged in' do
+  xscenario 'on listing show, not logged in' do
     expect(current_path).to eq('tiki-hut-2')
     expect(page).to have_content('Tiki Hut 2')
     expect(page).to have_content('$100.00')
