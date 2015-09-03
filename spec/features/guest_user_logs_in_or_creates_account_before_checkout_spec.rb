@@ -3,10 +3,9 @@ require 'rails_helper'
 feature 'User checks out' do
   before :each do
     create_locations
-    create_listings
 
     visit root_path
-    select('Asia', from: 'Location')
+    page.select('Asia', from: 'location')
     page.execute_script %Q{ $('#from').trigger("focus") } # activate datetime picker
     page.execute_script %Q{ $("a.ui-state-default:contains('15')").trigger("click") } # click on day 15click_on 'Search'
     page.execute_script %Q{ $('#to').trigger("focus") } # activate datetime picker
@@ -18,7 +17,7 @@ feature 'User checks out' do
     click_button 'Add to Cart'
   end
 
-  xscenario 'unregistered user' do
+  scenario 'unregistered user' do
     expect(current_path).to eq(cart_path)
     click_button 'Checkout'
     expect(current_path).to eq(login_path)
@@ -46,7 +45,7 @@ feature 'User checks out' do
     expect(user.orders.count).to eq(1)
   end
 
-  xscenario 'registered user, not logged in' do
+  scenario 'registered user, not logged in' do
     user = User.create(username: 'dave', password: 'password')
 
     expect(current_path).to eq(cart_path)
