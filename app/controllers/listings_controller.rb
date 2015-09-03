@@ -33,7 +33,6 @@ class ListingsController < ApplicationController
       redirect_to root_path
     else
       @search_results = Listing.all.where location_id: params[:location]
-      build_google_markers(@listings)
     end
   end
 
@@ -55,11 +54,11 @@ class ListingsController < ApplicationController
   end
 
   def build_google_markers(data)
-    #@hash = Gmaps4rails.build_markers(data) do |listing, marker|
-      #marker.lat listing.lat
-      #marker.lng listing.long
-      #marker.infowindow "<a id='map-links' href='#{listing_url(listing)}'>#{listing.name}</a>"
-    #end
+    @hash = Gmaps4rails.build_markers(data) do |listing, marker|
+      marker.lat listing.lat
+      marker.lng listing.long
+      marker.infowindow "<a id='map-links' href='#{listing_url(listing)}'>#{listing.name}</a>"
+    end
   end
 
   private
