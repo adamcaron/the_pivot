@@ -20,10 +20,6 @@ class PermissionService
 
   private
 
-  def platform_admin_permissions
-
-  end
-
   def business_admin_permissions
     return true if controller == 'listings' && action.in?(%w(edit destroy update))
     return true if controller == 'users' && action.in?(%w(edit destroy))
