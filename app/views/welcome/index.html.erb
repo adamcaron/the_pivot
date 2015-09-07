@@ -6,8 +6,8 @@
   <div class="search-area">
     <%= form_tag search_results_path, method: 'get' do %>
       <%= select_tag(:location, options_for_select(@locations.map{ |l| ["#{l.continent}", l.id ] }.insert(0, "Where do you want to go?"), selected: params[:location])) %>
-      <%= text_field_tag :from, params[:from], placeholder: "Check In" %>
-      <%= text_field_tag :to, params[:to], placeholder: "Check Out" %>
+      <%= text_field_tag :check_in, params[:check_in], placeholder: "Check In" %>
+      <%= text_field_tag :check_out, params[:check_out], placeholder: "Check Out" %>
       <%= submit_tag "Search", :name => nil %>
     <% end %>
   </div>

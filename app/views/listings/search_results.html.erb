@@ -14,7 +14,9 @@
             <%= image_tag result.image, class: "listing-index-card" %>
           </div>
           <div class="mdl-card__actions mdl-card--border">
-            <%= link_to "View Listing", listing_path(result.id), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+            <%#= link_to "View Listing", listing_path(result.id), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+            <%= link_to "View Listing", listing_path(result.id, check_in: params[:check_in], check_out: params[:check_out]), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+
           </div>
         </div>
       </div>

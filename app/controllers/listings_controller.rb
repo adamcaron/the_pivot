@@ -28,7 +28,7 @@ class ListingsController < ApplicationController
   end
 
   def search_results
-    session[:dates] = { to: params[:to], from: params[:from] }
+    # session[:dates] = { to: params[:to], from: params[:from] }
     if !cart_listing.valid?
       flash[:invalid_search] = "Invalid search. Please try again"
       redirect_to root_path
