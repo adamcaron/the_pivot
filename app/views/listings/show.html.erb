@@ -30,9 +30,8 @@
         All new! Beautiful, completely renovated / equipped. Plenty of sunshine all year round, from sunrise to sunset! A cosy and comfortable place!
       </p>
       <p>
-        <%= number_to_currency(@listing.cost) %> in <%= Location.find(@listing.location_id).continent %>
+        <%= number_to_currency(@listing.cost) %> per night
       </p>
-
       <%= link_to "Book Listing", cart_path(listing_id: @listing.id), method: :post, class: "call-to-action" %>
     </div>
 
