@@ -22,7 +22,7 @@
           <td><%= cart_listing.name %></td>
           <td><%= cart_listing.location %></td>
           <td><%= number_to_currency(cart_listing.cost_per_day) %></td>
-          <td><%= cart_listing.date_range %></td> <tbody>
+          <td><%= cart_listing.date_range %> (<%= cart_listing.number_of_days %> days)</td> <tbody>
         </tr>
           </tbody>
       </table>
