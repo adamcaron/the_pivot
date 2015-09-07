@@ -16,9 +16,9 @@ class CartListing
 
   def no_dates_selected
     dates[:from].nil? ||
-      dates[:to].nil? ||
-      dates[:from].empty? ||
-      dates[:to].empty?
+    dates[:to].nil? ||
+    dates[:from].empty? ||
+    dates[:to].empty?
   end
 
   def date_range
@@ -30,7 +30,7 @@ class CartListing
   end
 
   def number_of_days
-    Date.strptime(dates["to"], '%m/%d/%Y') - Date.strptime(dates["from"], '%m/%d/%Y')
+    (Date.strptime(dates["to"], '%m/%d/%Y') - Date.strptime(dates["from"], '%m/%d/%Y')).to_i
   end
 
   def total_cost
