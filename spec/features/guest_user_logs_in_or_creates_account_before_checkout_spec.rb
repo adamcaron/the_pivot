@@ -7,7 +7,9 @@ feature 'User checks out' do
       location = Location.create!(continent: 'Africa')
       listing1 = Listing.create!(name: 'testing hut', location_id: location.id, cost: 99)
       listing2 = Listing.create!(name: 'testing hut2', location_id: location.id, cost: 129)
-      Role.create!(title: "registered_user")
+      role = Role.create!(title: "registered_user")
+      user = User.create!(username: 'benji', password: 'password')
+      user.roles << role
 
       visit root_path
       page.select('Africa', from: 'location')
@@ -49,24 +51,23 @@ feature 'User checks out' do
       expect(user.reservations.count).to eq(1)
     end
 
-    xscenario 'registered user, not logged in' do
-      user = User.create(username: 'dave', password: 'password')
-
-      expect(current_path).to eq(cart_path)
-      click_button 'Checkout'
+    scenario 'registered user, not logged in' do
+      expect(page).to have_content('testing hut')
+      click_link("Book Listing")
+      click_link('Submit Payment')
       expect(current_path).to eq(login_path)
 
-      fill_in 'Username', with: user.username
-      fill_in 'Password', with: user.password
+      fill_in 'Username', with: "benji"
+      fill_in 'Password', with: "password"
 
       click_button 'Login'
-
-      visit cart_path
-
-      expect(click_button 'Checkout').to change(Reservation, :count).by(1)
+      click_link('Submit Payment')
 
       expect(current_path).to eq(reservations_path)
-      expect(page).to have_content('Reservations')
+      expect(page).to have_content('Reservation was successfully placed!')
+
+      user = User.find_by(username: 'benji')
+      expect(user.reservations.count).to eq(1)
     end
 
     xscenario 'registered user, already logged in' do
