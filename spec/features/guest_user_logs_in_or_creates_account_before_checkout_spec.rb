@@ -70,19 +70,33 @@ feature 'User checks out' do
       expect(user.reservations.count).to eq(1)
     end
 
-    xscenario 'registered user, already logged in' do
+    scenario 'registered user, already logged in' do
       user = User.create(username: 'dave', password: 'password')
+      user.roles << Role.first
       visit login_path
       fill_in 'Username', with: user.username
       fill_in 'Password', with: user.password
       click_button 'Login'
+      expect(current_path).to eq(root_path)
 
-      visit cart_path
 
-      expect(click_button 'Checkout').to change(Reservation, :count).by(1)
+      page.select('Africa', from: 'location')
+      fill_in 'from', with: '09/29/2015'
+      fill_in 'to', with: '09/30/2015'
+      click_button 'Search'
+      click_link("View Listing", match: :first)
+      click_link("Book Listing")
+
+      expect(Reservation.count).to eq(0)
+      click_link('Submit Payment')
+
+      #save_and_open_page
+      #require "pry"; binding.pry
+      #expect(click_link 'Submit Payment').to change(Reservation, :count).by(1)
+      expect(Reservation.count).to eq(1)
 
       expect(current_path).to eq(reservations_path)
-      expect(page).to have_content('Reservations')
+      expect(page).to have_content('Reservation was successfully placed!')
     end
   end
 end
