@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   add_flash_types :success, :info, :warning, :danger
 
   def cart_listing
-    @cart_listing ||= CartListing.new(session[:cart], session[:dates])
+    @cart_listing ||= CartListing.new(session[:cart])
   end
   helper_method :cart_listing
 

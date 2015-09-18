@@ -14,7 +14,7 @@
       <td class="mdl-data-table__cell--non-numeric"><%= link_to "View Reservation", reservation_path(reservation) %></td>
       <td><%= link_to reservation.id, reservation_path(reservation) %></td>
       <td><%= number_to_currency(reservation.total_cost) %></td>
-      <td class="mdl-data-table__cell--non-numeric"><%= (reservation.created_at).to_formatted_s(:long) %></td>
+      <td class="mdl-data-table__cell--non-numeric"><%= (reservation.created_at.to_date) %></td>
       <td class="mdl-data-table__cell--non-numeric"><%= reservation.status %></td>
     </tr>
   <% end %>
