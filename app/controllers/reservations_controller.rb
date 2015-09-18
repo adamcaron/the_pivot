@@ -1,5 +1,9 @@
 class ReservationsController < ApplicationController
 
+  def new
+    @listing = Listing.find(params[:listing_id])
+  end
+
   def create
     if current_user
       current_user.reservations.create(user_id:     current_user.id,
