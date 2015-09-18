@@ -40,7 +40,10 @@
           </tr>
           <tr>
             <% if current_user %>
-              <td id="checkout" class="mdl-data-table__cell--non-numeric"><%= link_to "Submit Payment", reservations_path(@listing.id), method: :post %></td>
+              <td id="checkout" class="mdl-data-table__cell--non-numeric"><%= link_to "Submit Payment", reservations_path(@listing.id,
+                                                                                                                          check_in: params[:check_in],
+                                                                                                                          check_out: params[:check_out],
+                                                                                                                          total_cost: params[:total_cost]), method: :post %></td>
             <% else %>
               <td id="checkout" class="mdl-data-table__cell--non-numeric"><%= link_to "Submit Payment", login_path, method: :get %></td>
             <% end %>

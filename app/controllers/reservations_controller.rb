@@ -8,13 +8,11 @@ class ReservationsController < ApplicationController
     if current_user
       current_user.reservations.create(user_id:     current_user.id,
                                        status:      1,
-                                       listing_id:  cart_listing.listing.id,
-                                       start_date:  session[:dates]["from"],
-                                       end_date:    session[:dates]["to"],
-                                       total_cost:  cart_listing.total_cost)
+                                       listing_id:  params[:listing_id],
+                                       start_date:  params[:check_in],
+                                       end_date:    params[:check_out],
+                                       total_cost:  params[:total_cost])
 
-      session[:cart].clear
-      session[:dates].clear
       flash[:notice] = "Reservation was successfully placed!"
       redirect_to reservations_path
     else
