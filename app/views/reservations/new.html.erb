@@ -20,9 +20,9 @@
         <tr>
           <td id="delete-link"><%= link_to "Change Reservation", search_results_path(location: @listing.location.id, check_in: params[:check_in], check_out: params[:check_out]) %></td>
           <td><%= @listing.name %></td>
-          <td><%= @listing.location %></td>
-          <td><%= number_to_currency(@listing.cost) %></td>
-          <td><%#= @listing.date_range %> (<%#= @listing.number_of_days %> days)</td> <tbody>
+          <td><%= @listing.location.continent %></td>
+          <td><%= number_to_currency(cost_per_day) %></td>
+          <td><%= date_range %> (<%= number_of_days.to_i %> days)</td> <tbody>
         </tr>
           </tbody>
       </table>
@@ -36,7 +36,7 @@
         </thead>
         <tbody>
           <tr>
-            <td><%#= number_to_currency(@listing.total_cost) %></td>
+            <td><%= number_to_currency(total_cost) %></td>
           </tr>
           <tr>
             <% if current_user %>
