@@ -46,7 +46,7 @@
       <%= form_tag cart_path(listing_id: @listing.id) do %>
         <%= text_field_tag :check_in, params[:check_in], placeholder: "Check In" %>
         <%= text_field_tag :check_out, params[:check_out], placeholder: "Check Out" %>
-        <%= submit_tag "Book Listing", class: :"call-to-action" %>
+        <%= submit_tag "Book Listing", class: "call-to-action" %>
       <% end %>
 
       <%#= link_to "Book Listing", cart_path(listing_id: @listing.id), method: :post, class: "call-to-action" %>
