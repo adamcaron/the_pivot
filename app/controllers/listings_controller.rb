@@ -29,11 +29,11 @@ class ListingsController < ApplicationController
 
   def search_results
     # session[:dates] = { to: params[:to], from: params[:from] }
-    if !cart_listing.valid?
+    if params[:check_in] && params[:check_out]
+      @search_results = Listing.all.where location_id: params[:location]
+    else
       flash[:invalid_search] = "Invalid search. Please try again"
       redirect_to root_path
-    else
-      @search_results = Listing.all.where location_id: params[:location]
     end
   end
 
