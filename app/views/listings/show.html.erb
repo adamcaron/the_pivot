@@ -43,9 +43,10 @@
       <%#= text_field_tag :from, params[:from], placeholder: "Check In" %>
       <%#= text_field_tag :to, params[:to], placeholder: "Check Out" %>
 
-      <%= form_tag cart_path(listing_id: @listing.id) do %>
+      <%= form_tag(new_reservation_path, method: :get) do %>
         <%= text_field_tag :check_in, params[:check_in], placeholder: "Check In" %>
         <%= text_field_tag :check_out, params[:check_out], placeholder: "Check Out" %>
+        <%= hidden_field_tag :listing_id, @listing.id %>
         <%= submit_tag "Book Listing", class: "call-to-action" %>
       <% end %>
 
