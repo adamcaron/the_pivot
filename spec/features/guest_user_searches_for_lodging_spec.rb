@@ -2,22 +2,19 @@ require 'rails_helper'
 
 feature 'Guest user searches for lodging' do
   scenario 'on home page, not logged in' do
-    create_locations
+
+    location = Location.create!(continent: 'Africa')
+    listing1 = Listing.create!(name: 'testing hut', location_id: location.id, cost: 99)
+    listing2 = Listing.create!(name: 'testing hut2', location_id: location.id, cost: 129)
 
     visit root_path
-    select('Asia', from: 'location')
-    find_by_id('from').click
-    # page.execute_script %Q{ $('#from').trigger("focus") } # activate datetime picker
-    find('15')
-    # page.execute_script %Q{ $("a.ui-state-default:contains('15')").trigger("click") } # click on day 15
-    find_by_id('to').click
-    # page.execute_script %Q{ $('#to').trigger("focus") } # activate datetime picker
-    find('16').click
-    # page.execute_script %Q{ $("a.ui-state-default:contains('16')").trigger("click") } # click on day 16
-
+    page.select('Africa', from: 'location')
+    fill_in 'from', with: '09/29/2015'
+    fill_in 'to', with: '09/30/2015'
     click_button 'Search'
 
-    expect(current_path).to eq(listings_path)
-    expect(page).to have_content('Asia')
+    expect(current_path).to eq(search_results_path)
+    expect(page).to have_content('testing hut')
+    expect(page).to have_content('testing hut2')
   end
 end
