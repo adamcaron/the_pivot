@@ -1,9 +1,11 @@
 class CartListing
-  attr_reader :cart, :dates, :listing
+  attr_reader :cart, :listing, #:check_in, :check_out
 
-  def initialize(cart, dates)
+  def initialize(cart)
     @cart = cart
-    @dates = dates
+    # @dates = dates
+    # @check_in = dates[:check_in]
+    # @check_out = dates[:check_out]
   end
 
   def listing
@@ -15,14 +17,14 @@ class CartListing
   end
 
   def no_dates_selected
-    dates[:from].nil? ||
-      dates[:to].nil? ||
-      dates[:from].empty? ||
-      dates[:to].empty?
+    # dates[:from].nil? ||
+    # dates[:to].nil? ||
+    # dates[:from].empty? ||
+    # dates[:to].empty?
   end
 
   def date_range
-    "#{dates["from"]} - #{dates["to"]}"
+    "#{check_in} - #{check_out}"
   end
 
   def cost_per_day
@@ -30,7 +32,7 @@ class CartListing
   end
 
   def number_of_days
-    Date.strptime(dates["to"], '%m/%d/%Y') - Date.strptime(dates["from"], '%m/%d/%Y')
+    Date.strptime(check_out, '%m/%d/%Y') - Date.strptime(check_in, '%m/%d/%Y')
   end
 
   def total_cost

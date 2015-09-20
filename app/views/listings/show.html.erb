@@ -30,10 +30,27 @@
         All new! Beautiful, completely renovated / equipped. Plenty of sunshine all year round, from sunrise to sunset! A cosy and comfortable place!
       </p>
       <p>
-        <%= number_to_currency(@listing.cost) %> in <%= Location.find(@listing.location_id).continent %>
+        <%= number_to_currency(@listing.cost) %> per night
       </p>
 
-      <%= link_to "Book Listing", cart_path(listing_id: @listing.id), method: :post, class: "call-to-action" %>
+
+      <%#= form_tag cart_path(listing_id: @listing.id), method: :post do %>
+        <%#= text_field_tag :from, params[:from], placeholder: "Check In" %>
+        <%#= text_field_tag :to, params[:to], placeholder: "Check Out" %>
+        <%#= submit_tag "Book Lodging", :name => nil %>
+      <%# end %>
+
+      <%#= text_field_tag :from, params[:from], placeholder: "Check In" %>
+      <%#= text_field_tag :to, params[:to], placeholder: "Check Out" %>
+
+      <%= form_tag(new_reservation_path, method: :get) do %>
+        <%= text_field_tag :check_in, params[:check_in], placeholder: "Check In" %>
+        <%= text_field_tag :check_out, params[:check_out], placeholder: "Check Out" %>
+        <%= hidden_field_tag :listing_id, @listing.id %>
+        <%= submit_tag "Book Listing", class: "call-to-action" %>
+      <% end %>
+
+      <%#= link_to "Book Listing", cart_path(listing_id: @listing.id), method: :post, class: "call-to-action" %>
     </div>
 
   </div>
