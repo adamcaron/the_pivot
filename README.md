@@ -1,5 +1,6 @@
 ## The Pivot: Project Description
 **Project Members:** [Adam Caron] (https://github.com/adamcaron), [Dave Maurer] (https://github.com/davemaurer), [Jack Yeh] (https://github.com/jxandery)
+
 [Project Outline] (https://github.com/turingschool/lesson_plans/blob/master/ruby_03-professional_rails_applications/the_pivot.markdown) | [Heroku] (http://way-out-there.herokuapp.com)
 
 
