@@ -1,4 +1,4 @@
-Project Members: [Adam Caron] (https://github.com/adamcaron), [Dave Maurer] (https://github.com/davemaurer), [Jack Yeh] (https://github.com/jxandery)
+**Project Members:** [Adam Caron] (https://github.com/adamcaron), [Dave Maurer] (https://github.com/davemaurer), [Jack Yeh] (https://github.com/jxandery)
 
 The Pivot is the first project in Module 3 at the [Turing School] (http://turing.io/). Each group is given a legacy project to work with. The intent of the project is to simulate the professional challenges of inheriting an imperfect code base and pivoting to a complete different concept.
 
@@ -8,7 +8,7 @@ The original project, [Endangerous Outfitters] (http://endangerousoutfitters.her
 
 ## Instructions for running the project locally:
 1. Clone the project in your terminal
-  $ git clone git@github.com:adamcaron/the_pivot.git
+  $ git clone <git@github.com:adamcaron/the_pivot.git>
 2. Install and setup the gem dependencies
   $ bundle install
 3. Start the server
