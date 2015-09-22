@@ -11,7 +11,7 @@ The original project, [Endangerous Outfitters] (http://endangerousoutfitters.her
 
 ## Instructions for running the project locally:
 1. Clone the project in your terminal
-  $ git clone <git@github.com:adamcaron/the_pivot.git>
+  $ git clone https://github.com/adamcaron/the_pivot.git
 2. Install and setup the gem dependencies
   $ bundle install
 3. Start the server
