@@ -1,10 +1,30 @@
-# Endangerous_Outfitters
+## The Pivot: Project Description
+**Project Members:** [Adam Caron] (https://github.com/adamcaron), [Dave Maurer] (https://github.com/davemaurer), [Jack Yeh] (https://github.com/jxandery)
+
+[Project Outline] (https://github.com/turingschool/lesson_plans/blob/master/ruby_03-professional_rails_applications/the_pivot.markdown) | [Heroku] (http://way-out-there.herokuapp.com)
 
 
-## What This App Does
+**The Pivot** is the first project in Module 3 at the [Turing School] (http://turing.io/). Each group is given a legacy project to work with. The intent of the project is to simulate the professional challenges of inheriting an imperfect code base and pivoting to a complete different concept.
 
-Endangerous Outfitters is a world-class guiding company that provides tours to the most remote places on Earth while providing high-end luxuries and local culture every step of the way.
+The original project, [Endangerous Outfitters] (http://endangerousoutfitters.herokuapp.com/), was a single platform e-commerce company offering luxury tour guide services. We turned Endangerous Outfitters into [Way Out There] (http://way-out-there.herokuapp.com), a multi-tenancy site for short-term lodging rentals. We drew on Airbnb for design and feature inspiration.
 
-We can transport you from suburbia to Siberia to hike among tigers, hang glide through an F3 tornado on the American plains, or kayak down Angels Falls in South America.
 
-Go ahead and be endangerous: start your adventure today.
+## Instructions for running the project locally:
+1. Clone the project in your terminal
+  $ git clone https://github.com/adamcaron/the_pivot.git
+2. Install and setup the gem dependencies
+  $ bundle install
+3. Start the server
+  $ rails s
+4. Visit http://localhost:3000 in your preferred browser
+5. Run the tests
+  $ bundle exec rspec
+
+## Areas of Focus
+- Working with Multitenancy
+- Implementing JavaScript
+- Securing a Rails App
+- Creating Seed files
+- Git Workflow
+- ** Sending Email
+- ** Implement payment system - Stripe
