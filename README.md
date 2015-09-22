@@ -1,6 +1,6 @@
 **Project Members:** [Adam Caron] (https://github.com/adamcaron), [Dave Maurer] (https://github.com/davemaurer), [Jack Yeh] (https://github.com/jxandery)
 
-The Pivot is the first project in Module 3 at the [Turing School] (http://turing.io/). Each group is given a legacy project to work with. The intent of the project is to simulate the professional challenges of inheriting an imperfect code base and pivoting to a complete different concept.
+**The Pivot** is the first project in Module 3 at the [Turing School] (http://turing.io/). Each group is given a legacy project to work with. The intent of the project is to simulate the professional challenges of inheriting an imperfect code base and pivoting to a complete different concept.
 
 The original project, [Endangerous Outfitters] (http://endangerousoutfitters.herokuapp.com/), was a single platform e-commerce company offering luxury tour guide services. We turned Endangerous Outfitters into [Way Out There] (http://way-out-there.herokuapp.com), a multi-tenancy site for short-term lodging rentals. We drew on Airbnb for design and feature inspiration.
 
