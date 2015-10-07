@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 feature 'Guest user sees details of a lodging option' do
   before :each do
     location = Location.create!(continent: 'Africa')
@@ -8,8 +7,8 @@ feature 'Guest user sees details of a lodging option' do
 
     visit root_path
     page.select('Africa', from: 'location')
-    fill_in 'from', with: '09/29/2015'
-    fill_in 'to', with: '09/30/2015'
+    fill_in 'check_in',   with: '09/29/2015'
+    fill_in 'check_out',  with: '09/30/2015'
     click_button 'Search'
 
     click_link 'View Listing'
