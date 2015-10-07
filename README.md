@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/adamcaron/the_pivot.png?label=ready&title=Ready)](https://waffle.io/adamcaron/the_pivot)
 ## The Pivot: Project Description
 **Project Members:** [Adam Caron] (https://github.com/adamcaron), [Dave Maurer] (https://github.com/davemaurer), [Jack Yeh] (https://github.com/jxandery)
 
