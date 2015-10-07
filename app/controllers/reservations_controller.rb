@@ -6,12 +6,12 @@ class ReservationsController < ApplicationController
 
   def create
     if current_user
-      current_user.reservations.create(user_id:     current_user.id,
-                                       status:      1,
-                                       listing_id:  params[:listing_id],
-                                       start_date:  params[:check_in],
-                                       end_date:    params[:check_out],
-                                       total_cost:  params[:total_cost])
+      Reservation.create!(user_id:     current_user.id,
+                          status:      1,
+                          listing_id:  params[:listing_id],
+                          check_in:    Date.strptime(params[:check_in], '%m/%d/%Y'),
+                          check_out:   Date.strptime(params[:check_out], '%m/%d/%Y'),
+                          total_cost:  params[:total_cost].to_f)
 
       flash[:notice] = "Reservation was successfully placed!"
       redirect_to reservations_path

@@ -9,8 +9,8 @@ feature 'Guest user searches for lodging' do
 
     visit root_path
     page.select('Africa', from: 'location')
-    fill_in 'from', with: '09/29/2015'
-    fill_in 'to', with: '09/30/2015'
+    fill_in 'check_in',   with: '09/29/2015'
+    fill_in 'check_out',  with: '09/30/2015'
     click_button 'Search'
 
     expect(current_path).to eq(search_results_path)
