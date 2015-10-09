@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "welcome#index"
 
-  resources :reservations,  only: [:new, :create, :index,  :show]
+  resources :reservations,    only: [:new, :create, :index,  :show]
 
   resources :listings
   resources :locations,       only: [:index, :show]
