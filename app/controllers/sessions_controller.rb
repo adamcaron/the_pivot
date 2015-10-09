@@ -16,11 +16,12 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    delete_pending_reservation
     redirect_to root_path
   end
 
   def send_to_checkout_or_homepage
-    if params[:listing_id]
+    if cookies[:check_in] && cookies[:check_out]
       redirect_to new_reservation_path
     else
       redirect_to root_path

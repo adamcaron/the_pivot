@@ -8,6 +8,19 @@ class ApplicationController < ActionController::Base
 
   add_flash_types :success, :info, :warning, :danger
 
+  def find_listing
+    if params[:listing_id]
+      Listing.find(params[:listing_id])
+    else
+      Listing.find(cookies[:listing_id])
+    end
+  end
+
+  def delete_pending_reservation
+    cookies.delete :check_in
+    cookies.delete :check_out
+  end
+
   def cart_listing
     @cart_listing ||= CartListing.new(session[:cart])
   end
