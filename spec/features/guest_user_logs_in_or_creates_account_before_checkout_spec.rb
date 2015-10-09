@@ -27,7 +27,7 @@ feature 'User checks out' do
       end
     end
 
-    xscenario 'unregistered user' do
+    scenario 'unregistered user' do
       expect(page).to have_content('testing hut')
       click_button("Book Listing")
       click_link('Submit Payment')
@@ -51,7 +51,7 @@ feature 'User checks out' do
       expect(user.reservations.count).to eq(1)
     end
 
-    xscenario 'as a registered user, not logged in' do
+    scenario 'as a registered user, not logged in' do
       expect(page).to have_content('testing hut')
       click_button("Book Listing")
       click_link('Submit Payment')

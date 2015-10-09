@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
   def delete_pending_reservation
     cookies.delete :check_in
     cookies.delete :check_out
+    cookies.delete :listing_id
   end
 
   def cart_listing
