@@ -2,7 +2,12 @@ class Reservation < ActiveRecord::Base
   belongs_to  :user
   belongs_to  :listing
 
-  validates   :status, :listing_id, presence: true
+  validates   :user_id,
+              :status,
+              :listing_id,
+              :check_in,
+              :check_out,
+              :total_cost, presence: true
 
   attr_accessor :cart
 

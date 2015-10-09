@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
   root "welcome#index"
 
-  resources :reservations,  only: [:new, :create, :index,  :show]
-
-  post    '/cart',            to: 'carts#create'
-  get     '/cart',            to: 'carts#show'
-  delete  '/cart',            to: 'carts#destroy'
+  resources :reservations,    only: [:new, :create, :index,  :show]
 
   resources :listings
   resources :locations,       only: [:index, :show]

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150830184402) do
+ActiveRecord::Schema.define(version: 20151007162802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 20150830184402) do
     t.datetime "updated_at",             null: false
     t.integer  "status",     default: 0
     t.integer  "listing_id"
-    t.date     "start_date"
-    t.date     "end_date"
+    t.date     "check_in"
+    t.date     "check_out"
     t.float    "total_cost"
   end
 

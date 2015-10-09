@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'User checks out' do
-  describe 'views listings' do
+  describe 'and views listings' do
 
     before :each do
       location = Location.create!(continent: 'Africa')
@@ -13,8 +13,8 @@ feature 'User checks out' do
 
       visit root_path
       page.select('Africa', from: 'location')
-      fill_in 'from', with: '09/29/2015'
-      fill_in 'to', with: '09/30/2015'
+      fill_in 'check_in',   with: '09/29/2015'
+      fill_in 'check_out',  with: '09/30/2015'
       click_button 'Search'
 
       expect(current_path).to eq(search_results_path)
@@ -29,7 +29,7 @@ feature 'User checks out' do
 
     scenario 'unregistered user' do
       expect(page).to have_content('testing hut')
-      click_link("Book Listing")
+      click_button("Book Listing")
       click_link('Submit Payment')
       expect(current_path).to eq(login_path)
 
@@ -51,9 +51,9 @@ feature 'User checks out' do
       expect(user.reservations.count).to eq(1)
     end
 
-    scenario 'registered user, not logged in' do
+    scenario 'as a registered user, not logged in' do
       expect(page).to have_content('testing hut')
-      click_link("Book Listing")
+      click_button("Book Listing")
       click_link('Submit Payment')
       expect(current_path).to eq(login_path)
 
@@ -81,18 +81,15 @@ feature 'User checks out' do
 
 
       page.select('Africa', from: 'location')
-      fill_in 'from', with: '09/29/2015'
-      fill_in 'to', with: '09/30/2015'
+      fill_in 'check_in',   with: '09/29/2015'
+      fill_in 'check_out',  with: '09/30/2015'
       click_button 'Search'
       click_link("View Listing", match: :first)
-      click_link("Book Listing")
+      click_button("Book Listing")
 
       expect(Reservation.count).to eq(0)
       click_link('Submit Payment')
 
-      #save_and_open_page
-      #require "pry"; binding.pry
-      #expect(click_link 'Submit Payment').to change(Reservation, :count).by(1)
       expect(Reservation.count).to eq(1)
 
       expect(current_path).to eq(reservations_path)
