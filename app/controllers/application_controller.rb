@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_action :generate_cart
   before_action :authorize!
 
   # Prevent CSRF attacks by raising an exception.
@@ -22,19 +21,10 @@ class ApplicationController < ActionController::Base
     cookies.delete :listing_id
   end
 
-  def cart_listing
-    @cart_listing ||= CartListing.new(session[:cart])
-  end
-  helper_method :cart_listing
-
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   helper_method :current_user
-
-  def generate_cart
-    @cart ||= Cart.new(session[:cart])
-  end
 
   def current_permission
     @current_permission ||= PermissionService.new(current_user)

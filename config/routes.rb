@@ -3,10 +3,6 @@ Rails.application.routes.draw do
 
   resources :reservations,  only: [:new, :create, :index,  :show]
 
-  post    '/cart',            to: 'carts#create'
-  get     '/cart',            to: 'carts#show'
-  delete  '/cart',            to: 'carts#destroy'
-
   resources :listings
   resources :locations,       only: [:index, :show]
   resources :users

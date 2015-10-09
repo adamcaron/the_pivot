@@ -28,7 +28,6 @@ class ListingsController < ApplicationController
   end
 
   def search_results
-    # session[:dates] = { to: params[:to], from: params[:from] }
     if !params[:location].empty? && !params[:check_in].empty? && !params[:check_out].empty?
       @search_results = Listing.all.where location_id: params[:location]
     else
