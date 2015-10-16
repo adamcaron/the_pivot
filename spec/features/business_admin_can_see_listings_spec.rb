@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Business admin/host can see their listings' do
-  describe 'invalid information' do
+  describe 'valid information' do
 
     before :each do
       user = User.create!(username: 'benji', password: 'password')
