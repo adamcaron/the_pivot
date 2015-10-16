@@ -22,16 +22,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if current_user.id == params[:id].to_i
-      @user = User.find(current_user.id)
-    else
-      flash[:error] = "That's not you!"
-      if current_admin?
-        redirect_to admin_dashboard_path
-      else
-        redirect_to profile_path
-      end
-    end
+    @user = User.find(current_user.id)
   end
 
   def update
@@ -41,7 +32,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Profile updated!"
       redirect_to dashboard_path
     else
-      flash[:error] = "Invalid input - Please try updating listing again"
+      flash[:error] = "Invalid input - Please try updating user again"
       render :edit
     end
   end
