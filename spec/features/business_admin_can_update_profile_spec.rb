@@ -9,7 +9,7 @@ feature 'Business admin/host can see their listings' do
       user.roles << role
     end
 
-    scenario 'registered admin' do
+    scenario 'registered admin updates with valid information' do
       visit root_path
       click_link("Login")
       expect(current_path).to eq(login_path)
@@ -29,5 +29,24 @@ feature 'Business admin/host can see their listings' do
       expect(page).to have_content("Profile updated!")
     end
 
+    scenario 'registered admin can not update with invalid information' do
+      visit root_path
+      click_link("Login")
+      expect(current_path).to eq(login_path)
+
+      fill_in 'Username', with: "benji"
+      fill_in 'Password', with: "password"
+      click_button("Login")
+      click_link_or_button("benji")
+      expect(current_path).to eq(dashboard_path)
+
+      click_link("Edit Profile")
+      expect(page).to have_content("Update Profile")
+
+      fill_in 'Username', with: ""
+      fill_in 'New Password', with: "password"
+      click_link_or_button("Update User")
+      expect(page).to have_content("Invalid input - Please try updating user again")
+    end
   end
 end
