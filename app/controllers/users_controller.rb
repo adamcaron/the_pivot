@@ -18,11 +18,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    if current_user == nil
-      redirect_to '/404'
-    else
-      @listings = Listing.where(host_id: current_user.id)
-    end
+    @listings = Listing.where(host_id: current_user.id)
   end
 
   def edit
