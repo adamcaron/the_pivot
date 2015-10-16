@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature 'Business admin/host can see their listings' do
-  describe 'invalid information' do
+feature 'Business admin/host can update their profile' do
+  describe 'valid and invalid information' do
 
     before :each do
       user = User.create!(username: 'benji', password: 'password')
@@ -9,7 +9,7 @@ feature 'Business admin/host can see their listings' do
       user.roles << role
     end
 
-    scenario 'registered admin updates with valid information' do
+    scenario 'registered admin updates profile with valid information' do
       visit root_path
       click_link("Login")
       expect(current_path).to eq(login_path)
@@ -29,7 +29,7 @@ feature 'Business admin/host can see their listings' do
       expect(page).to have_content("Profile updated!")
     end
 
-    scenario 'registered admin can not update with invalid information' do
+    scenario 'registered admin can not update profile with invalid information' do
       visit root_path
       click_link("Login")
       expect(current_path).to eq(login_path)
