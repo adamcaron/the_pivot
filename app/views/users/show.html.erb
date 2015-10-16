@@ -33,7 +33,7 @@
           </div>
           <div class="mdl-card__actions mdl-card--border">
             <% @listings.each do |listing| %>
-              <%= listing.name %><%= link_to 'Edit', edit_listing_path(listing), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %><br>
+              <%= listing.name %><%= link_to 'Edit Listing', edit_listing_path(listing), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %><br>
             <% end %>
           </div>
         </div>
