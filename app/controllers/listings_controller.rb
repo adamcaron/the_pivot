@@ -42,14 +42,13 @@ class ListingsController < ApplicationController
 
   def update
     @listing = Listing.find(params[:id])
-    @listing.update!(listing_params)
-    if @listing.save
+    if @listing.update(listing_params)
       current_user.update!(host_id: current_user.id)
       flash[:notice] = "Listing updated!"
       redirect_to dashboard_path
     else
       flash[:error] = "Listing not updated - Please try updating listing again"
-      render '/listings/edit.html.erb'
+      render :edit
     end
   end
 
