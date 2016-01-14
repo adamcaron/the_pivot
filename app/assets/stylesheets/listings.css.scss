@@ -10,6 +10,7 @@
 }
 
 .listing-page-map {
+  border-radius: 5px 5px 5px 5px;
   height: 400px;
 }
 
@@ -52,6 +53,7 @@
 }
 
 .call-to-action, .call-to-action:visited, .call-to-action:link {
+  margin-top: 15px;
   display: block;
   font-size: 1.3em;
   color: white;
@@ -61,14 +63,7 @@
   border: solid 1px #363636;
   border-radius: 5px 5px 5px 5px;
   text-align: center;
-  float: right;
-  width: 66%;
-}
-
-.call-to-action:hover {
-  -moz-box-shadow:    0px 2px 15px 0px rgba(0, 0, 0, 0.4);
-  -webkit-box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.4);
-  box-shadow:         0px 2px 15px 0px rgba(0, 0, 0, 0.4);
+  width: 275px;
 }
 
 .edit-listing-table {
