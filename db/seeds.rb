@@ -131,11 +131,12 @@ class Seed
 
   def generate_reservations
     10.times do
-      Reservation.find_or_create_by!(user_id:      User.first(10).sample.id,
-                                     status:       ['Ordered', 'Paid', 'Completed'].sample,
-                                     listing_id:   Listing.first(10).sample.id,
-                                     start_date:   Date.today,
-                                     end_date:     Date.today)
+      Reservation.find_or_create_by!(user_id:    User.first(10).sample.id,
+                                     status:     ['Ordered', 'Paid', 'Completed'].sample,
+                                     listing_id: Listing.first(10).sample.id,
+                                     check_in:   Date.today,
+                                     check_out:  Date.today + 3,
+                                     total_cost: 1299.00)
     end
   end
 end
