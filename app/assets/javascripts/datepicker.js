@@ -1,5 +1,6 @@
 $(function() {
     $( "#check_in" ).datepicker({
+      minDate: 0,
       defaultDate: "+1w",
       changeMonth: true,
       numberOfMonths: 3,
@@ -8,6 +9,7 @@ $(function() {
       }
     });
     $( "#check_out" ).datepicker({
+      minDate: 0,
       defaultDate: "+1w",
       changeMonth: true,
       numberOfMonths: 3,
